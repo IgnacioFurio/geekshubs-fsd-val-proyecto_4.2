@@ -5,7 +5,7 @@ import './Login.css'
 export const Login = () => {
 
 
-    const [validationField, setValidationField] = useState(
+    const [inputField, setInputField] = useState(
         {
             email: '',
             password: ''
@@ -14,7 +14,7 @@ export const Login = () => {
 
     const inputHandler = (e) => {
         
-        setValidationField((prevState)=>(
+        setInputField((prevState)=>(
                 {
                     ...prevState,
                     [e.target.name]: e.target.value
