@@ -1,8 +1,13 @@
 import React from 'react';
+import { Navigator } from '../Navigator/Navigator';
 import './Header.css'
 
 export const Header = () => {
     return (
-    <div className='headerDesign'>Soy unHeader</div>
+    <div className='headerDesign'>
+        <Navigator route={'Home'} destination={'/'}/>
+        <Navigator route={'Register'} destination={'/register'}/>
+        <Navigator route={'Login'} destination={'/login'}/>
+    </div>
     )
 };
