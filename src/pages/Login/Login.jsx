@@ -1,7 +1,12 @@
 import React from 'react';
+import { InputType } from '../../common/InputType/InputType';
 
 export const Login = () => {
     return (
-        <div>Entra en el Login</div>
+        <>
+            <InputType 
+                className={'inputBasicDesign'}
+            />
+        </>
     );
 };
