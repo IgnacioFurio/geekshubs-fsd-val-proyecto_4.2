@@ -1,0 +1,8 @@
+.headerDesign{
+    height: 15vh;
+
+    background-color: cadetblue;
+
+    display: flex;
+    align-items: end;
+}

@@ -1,7 +1,8 @@
-import React from 'react'
+import React from 'react';
+import './Header.css'
 
 export const Header = () => {
     return (
-        <div className='headerDesign'>Hola soy un Header</div>
+    <div className='headerDesign'>Soy unHeader</div>
     )
-}
+};
