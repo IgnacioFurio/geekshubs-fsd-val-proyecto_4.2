@@ -11,7 +11,7 @@ export const InputType = ({className, type, name, placeholder, required, changeF
 
     return (
         <>
-            <div>{upperName}:</div>
+            <div className='inputName'>{upperName}:</div>
             <input 
                 className={className}
                 type={type}

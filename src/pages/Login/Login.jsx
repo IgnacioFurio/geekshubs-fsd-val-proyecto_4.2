@@ -91,11 +91,6 @@ export const Login = () => {
         <Container fluid className='loginDesign'>
             <Row>
                 <Col xs={1}></Col>
-                <Col xs={10}>E-mail:</Col>
-                <Col xs={1}></Col>
-            </Row>
-            <Row>
-                <Col xs={1}></Col>
                 <Col xs={10}>
                     <InputType 
                         className={'inputBasicDesign'}
@@ -112,11 +107,6 @@ export const Login = () => {
             <Row>
                 <Col xs={1}></Col>
                 <Col xs={10}>{errorInputField.emailError}</Col>
-                <Col xs={1}></Col>
-            </Row>
-            <Row>
-                <Col xs={1}></Col>
-                <Col xs={10}>Password:</Col>
                 <Col xs={1}></Col>
             </Row>
             <Row>
