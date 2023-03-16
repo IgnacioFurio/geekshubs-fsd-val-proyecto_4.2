@@ -1,7 +1,7 @@
 import React from 'react';
 import './InputType.css';
 
-export const InputType = ({className, type, name, placeholder, changeFunction}) => {
+export const InputType = ({className, type, name, placeholder, required, changeFunction, blurFunction}) => {
 
     return (
         <>
@@ -10,7 +10,9 @@ export const InputType = ({className, type, name, placeholder, changeFunction}) 
                 type={type}
                 name={name}
                 placeholder={placeholder}
+                required={required}
                 onChange={(e)=>changeFunction(e)}
+                onBlur={(e)=>blurFunction(e)}
             />
         </>
     );
