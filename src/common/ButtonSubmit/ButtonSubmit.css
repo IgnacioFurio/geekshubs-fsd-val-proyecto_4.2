@@ -1,5 +1,5 @@
-.submitDesign{
-    background-color:lightskyblue;
+.submitDesignPassive{
+    background-color:gainsboro;
     height: 2em;
     display: flex;
     justify-content: center;
@@ -7,4 +7,14 @@
     margin-top: 1em;
 
     border-radius: 0.2em;
+}
+
+.submitDesignActive{
+    transition: 0.3s;
+    background-color: cadetblue;
+    cursor: pointer;
+}
+.submitDesignActive:hover{
+    transition: 0.3s;
+    background-color: lightskyblue;
 }

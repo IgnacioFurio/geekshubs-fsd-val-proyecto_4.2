@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import { InputType } from '../../common/InputType/InputType';
 import { ButtonSubmit } from '../../common/ButtonSubmit/ButtonSubmit'
+import { validate } from '../../helpers/useful';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import './Login.css'
-import { validate } from '../../helpers/useful';
 
 export const Login = () => {
 
@@ -35,6 +35,9 @@ export const Login = () => {
         }
     )
 
+    //activate submit button
+    const [submitActive, setSubmitActive] = useState(false)
+
     //HANDLERS
 
     const inputHandler = (e) => {
@@ -52,8 +55,40 @@ export const Login = () => {
 
     useEffect(() => {
 
+        //functions to make submit button activated
+        //in case that a field is empty
+        for(let empty in inputField){
 
+            if(inputField[empty] === ""){
+                
+                setSubmitActive(false);
 
+                return;
+            };
+        };
+
+        //in case that a field is not valid
+        for(let valid in validInputField){
+
+            if(validInputField[valid] === false){
+
+                setSubmitActive(false);
+                return;
+            };
+        };
+
+        //in case that a field shows an error
+        for(let error in errorInputField){
+
+            if(errorInputField[error]){
+
+                setSubmitActive(false);
+                return;
+            };
+        };
+
+        //in case the data it's full validated
+        setSubmitActive(true);
     });
 
     //FUNCTIONS
@@ -133,7 +168,9 @@ export const Login = () => {
                 <Col xs={4}></Col>
                 <Col xs={4}>
                     <ButtonSubmit 
-                        className={'submitDesign'} 
+                        className={
+                            submitActive ? 'submitDesignPassive submitDesignActive' : 'submitDesignPassive'
+                        } 
                         buttonName={'Log In'}
                     />
                 </Col>
