@@ -38,7 +38,7 @@ export const validate = (name, data, required) => {
         } else if (!/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(data)) {
         return {message: "Your password must contain at least one letter and one number", valid: false};
         };
-        return {message: "", validated: true};
+        return {message: "", valid: true};
         
     default:
         console.log("Fielt not recognized");

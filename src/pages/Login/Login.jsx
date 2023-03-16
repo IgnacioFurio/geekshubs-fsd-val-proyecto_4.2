@@ -67,7 +67,7 @@ export const Login = () => {
                 }
             )
         );
-                console.log(error);
+        console.log(validInputField);
     };
 
     return (
