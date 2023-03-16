@@ -34,7 +34,7 @@ export const validate = (name, data, required) => {
         if (data === "" && required === true) {
         return {message: "Field Password required", valid: false};
         } else if (!/.{8,}$/.test(data)) {
-        return {message: "Your password must be contain at least eight characters", valid: false};
+        return {message: "Your password must contain at least eight characters", valid: false};
         } else if (!/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(data)) {
         return {message: "Your password must contain at least one letter and one number", valid: false};
         };

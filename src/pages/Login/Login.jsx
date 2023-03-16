@@ -11,6 +11,7 @@ export const Login = () => {
 
     //HOOKS
 
+    //set inputs
     const [inputField, setInputField] = useState(
         {
             email: '',
@@ -18,12 +19,21 @@ export const Login = () => {
         }
     );
 
+    //validate the value inside the inputs
     const [validInputField, setValidInputfield] = useState(
         {
             emailValid: false,
-            passworValid: false
+            passwordValid: false
         }
     );
+
+    //error messages if something is wrong inside the inputs
+    const [errorInputField, setErrorInputField] = useState(
+        {
+            emailError: "",
+            passwordError: ""
+        }
+    )
 
     //HANDLERS
 
@@ -67,7 +77,14 @@ export const Login = () => {
                 }
             )
         );
-        console.log(validInputField);
+        
+        setErrorInputField((prevState)=> (
+                {
+                ...prevState,
+                [e.target.name + 'Error']: check.message
+                }
+            )
+        );
     };
 
     return (
@@ -94,6 +111,11 @@ export const Login = () => {
             </Row>
             <Row>
                 <Col xs={1}></Col>
+                <Col xs={10}>{errorInputField.emailError}</Col>
+                <Col xs={1}></Col>
+            </Row>
+            <Row>
+                <Col xs={1}></Col>
                 <Col xs={10}>Password:</Col>
                 <Col xs={1}></Col>
             </Row>
@@ -111,6 +133,11 @@ export const Login = () => {
                     />
                 </Col>
                 <Col xs={1}></Col>            
+            </Row>
+            <Row>
+                <Col xs={1}></Col>
+                <Col xs={10}>{errorInputField.passwordError}</Col>
+                <Col xs={1}></Col>
             </Row>
             <Row>
                 <Col xs={4}></Col>
