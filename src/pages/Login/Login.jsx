@@ -39,7 +39,6 @@ export const Login = () => {
     const [submitActive, setSubmitActive] = useState(false)
 
     //HANDLERS
-
     const inputHandler = (e) => {
         
         setInputField((prevState)=>(

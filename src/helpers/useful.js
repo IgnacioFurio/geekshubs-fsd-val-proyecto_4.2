@@ -14,6 +14,17 @@ export const validate = (name, data, required) => {
     //     }
 
     //     return {message: "", validated: true};
+    case "user":
+
+        if(data === "" && required === true){
+
+        return {message: "Field E-mail required", valid: false};
+
+        } else if (/^(?=.{8,20}$)/.test(data)) {
+
+            return {message: "Field E-mail required", valid: false};
+
+        };
 
     case "email":
 

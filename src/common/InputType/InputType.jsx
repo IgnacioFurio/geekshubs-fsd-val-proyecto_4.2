@@ -9,6 +9,10 @@ export const InputType = ({className, type, name, placeholder, required, changeF
 
     let upperName = toUpperCaseFirstOnly(name)
 
+    if( upperName === "Password2"){
+        upperName = 'Confirm Password';
+    };
+
     return (
         <>
             <div className='inputName'>{upperName}:</div>
