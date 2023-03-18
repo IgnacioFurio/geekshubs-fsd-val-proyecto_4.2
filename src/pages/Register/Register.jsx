@@ -6,6 +6,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import './Register.css';
+import { ButtonSubmit } from '../../common/ButtonSubmit/ButtonSubmit';
 
 export const Register = () => {
 
@@ -39,7 +40,10 @@ export const Register = () => {
         passwordError: '',
         password2Error: ''
       }
-  )
+  );
+
+  //activate submit button
+  const [submitActive, setSubmitActive] = useState(false);
 
   // HANDLER 
   const inputHandler = (e) => {
@@ -55,13 +59,46 @@ export const Register = () => {
 
   // USEEFFECT
   useEffect(() => {
-    console.log(newRegister.password);
-    console.log(errorInputField.passwordError);
-    console.log(validInputField.passwordValid);
-    console.log(newRegister.password2);
-    console.log(errorInputField.password2Error);
-    console.log(validInputField.password2Valid);
-  })
+    //functions to make submit button activated
+    //in case that a field is empty
+    for(let empty in newRegister){
+      
+      if(newRegister[empty] === ""){
+          console.log(newRegister);
+            
+            setSubmitActive(false);
+
+            return;
+        };
+    };
+
+    //in case that a field is not valid
+    for(let valid in validInputField){
+      
+      if(validInputField[valid] === false){
+        
+            setSubmitActive(false);
+            return;
+        };
+    };
+
+    //in case that a field shows an error
+    for(let error in errorInputField){
+      console.log(errorInputField);
+
+        if(errorInputField[error]){
+
+            setSubmitActive(false);
+            return;
+        };
+    };
+
+    console.log(newRegister);
+    console.log(validInputField);
+    console.log(errorInputField);
+    //in case the data it's full validated
+    setSubmitActive(true);
+});
 
   // FUNCTIONS
   const checkError = (e) => {
@@ -174,6 +211,18 @@ export const Register = () => {
         </Col>
         <Col xs={1}></Col>
       </Row>
+      <Row>
+                <Col xs={4}></Col>
+                <Col xs={4}>
+                    <ButtonSubmit 
+                        className={
+                            submitActive ? 'submitDesignPassive submitDesignActive' : 'submitDesignPassive'
+                        } 
+                        buttonName={'Log In'}
+                    />
+                </Col>
+                <Col xs={4}></Col>
+            </Row>
     </Container>
   );
 };

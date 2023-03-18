@@ -1,7 +1,7 @@
 import React from 'react';
 import './InputType.css';
 
-export const InputType = ({className, type, name, placeholder, required, changeFunction, blurFunction}) => {
+export const InputType = ({className, type, name, placeholder, required, error, changeFunction, blurFunction}) => {
 
     const toUpperCaseFirstOnly = (str) => {
         return str.charAt(0).toUpperCase() + str.slice(1);
@@ -25,6 +25,7 @@ export const InputType = ({className, type, name, placeholder, required, changeF
                 onChange={(e)=>changeFunction(e)}
                 onBlur={(e)=>blurFunction(e)}
             />
+            <div>{error}</div>
         </>
     );
 };

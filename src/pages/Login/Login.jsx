@@ -33,10 +33,10 @@ export const Login = () => {
             emailError: "",
             passwordError: ""
         }
-    )
+    );
 
     //activate submit button
-    const [submitActive, setSubmitActive] = useState(false)
+    const [submitActive, setSubmitActive] = useState(false);
 
     //HANDLERS
     const inputHandler = (e) => {
@@ -132,16 +132,12 @@ export const Login = () => {
                         name={'email'}
                         placeholder={'example@email.com'}
                         required={true}
+                        error={errorInputField.emailError}
                         changeFunction={(e)=>inputHandler(e)}
                         blurFunction={(e)=>checkError(e)}
                     />
                 </Col>
                 <Col xs={1}></Col>            
-            </Row>
-            <Row>
-                <Col xs={1}></Col>
-                <Col xs={10}>{errorInputField.emailError}</Col>
-                <Col xs={1}></Col>
             </Row>
             <Row>
                 <Col xs={1}></Col>
@@ -152,16 +148,12 @@ export const Login = () => {
                         name={'password'}
                         placeholder={'password (egg, 12345)'}
                         required={true}
+                        error={errorInputField.passwordError}
                         changeFunction={(e)=>inputHandler(e)}
                         blurFunction={(e)=>checkError(e)}
                     />
                 </Col>
                 <Col xs={1}></Col>            
-            </Row>
-            <Row>
-                <Col xs={1}></Col>
-                <Col xs={10}>{errorInputField.passwordError}</Col>
-                <Col xs={1}></Col>
             </Row>
             <Row>
                 <Col xs={4}></Col>
