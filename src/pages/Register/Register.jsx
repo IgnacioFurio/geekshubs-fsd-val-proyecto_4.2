@@ -18,7 +18,7 @@ export const Register = () => {
       user: '',
       email: '',
       password: '',
-      password2: ''
+      // password2: ''
     }
   );
 
@@ -28,7 +28,7 @@ export const Register = () => {
         userValid: false,
         emailValid: false,
         passwordValid: false,
-        password2Valid: false
+        // password2Valid: false
       }
   );
 
@@ -38,7 +38,7 @@ export const Register = () => {
         userError: '',
         emailError: '',
         passwordError: '',
-        password2Error: ''
+        // password2Error: ''
       }
   );
 
@@ -60,42 +60,38 @@ export const Register = () => {
   // USEEFFECT
   useEffect(() => {
     //functions to make submit button activated
+
     //in case that a field is empty
     for(let empty in newRegister){
       
       if(newRegister[empty] === ""){
-          console.log(newRegister);
-            
-            setSubmitActive(false);
 
+        setSubmitActive(false);
+        
             return;
+          };
         };
-    };
 
     //in case that a field is not valid
     for(let valid in validInputField){
-      
+
       if(validInputField[valid] === false){
         
-            setSubmitActive(false);
+        setSubmitActive(false);
             return;
         };
     };
-
+    
     //in case that a field shows an error
     for(let error in errorInputField){
-      console.log(errorInputField);
 
         if(errorInputField[error]){
-
+          
             setSubmitActive(false);
             return;
-        };
+          };
     };
-
-    console.log(newRegister);
-    console.log(validInputField);
-    console.log(errorInputField);
+    
     //in case the data it's full validated
     setSubmitActive(true);
 });
@@ -109,12 +105,12 @@ export const Register = () => {
       e.target.name,
       e.target.value,
       e.target.required
-    );
-
+      );
+      
     error = check.message
 
     
-    setValidInputfield((prevState)=> (
+    setValidInputfield((prevState) => (
           {
             ...prevState,
             [e.target.name + 'Valid']: check.valid
@@ -122,31 +118,28 @@ export const Register = () => {
         )
       );
       
-    setErrorInputField((prevState)=> (
-          {
-            ...prevState,
-            [e.target.name + 'Error']: check.message
-          }
-        )
-      );
-        
-    //confirm password
-    if( newRegister.password2 !== newRegister.password ){
-
-      errorInputField.password2Error = "The passwords do not match."
-      validInputField.password2Valid = false
-
-      return;
-
-    } else if (newRegister.password2 === newRegister.password) {
-
-      errorInputField.password2Error = ""
-      validInputField.password2Valid = true
-
-      return;
-
-    };
+    setErrorInputField((prevState) => (
+        {
+          ...prevState,
+          [e.target.name + 'Error']: check.message
+        }
+      )
+    );
   };
+
+  // const confirmPass = () => {
+
+  //   if(newRegister.password2 !== newRegister.password && newRegister.password2 !== ""){
+
+  //     errorInputField.password2Error = 'Password and Confirm Password shoud be the same.'
+  //     validInputField.password2Valid = false
+
+  //   } else {
+
+  //     errorInputField.password2Error = ""
+  //     validInputField.password2Valid = true
+
+  //   };
 
 
   return (
@@ -160,6 +153,7 @@ export const Register = () => {
                         name={'user'}
                         placeholder={'Eddieden06'}
                         required={true}
+                        error={errorInputField.userError}
                         changeFunction={(e)=>inputHandler(e)}
                         blurFunction={(e)=>checkError(e)}
                     />
@@ -175,6 +169,7 @@ export const Register = () => {
                         name={'email'}
                         placeholder={'example@email.com'}
                         required={true}
+                        error={errorInputField.emailError}
                         changeFunction={(e)=>inputHandler(e)}
                         blurFunction={(e)=>checkError(e)}
                     />
@@ -190,13 +185,14 @@ export const Register = () => {
                         name={'password'}
                         placeholder={'password (egg, 12345)'}
                         required={true}
+                        error={errorInputField.passwordError}
                         changeFunction={(e)=>inputHandler(e)}
                         blurFunction={(e)=>checkError(e)}
                     />
         </Col>
         <Col xs={1}></Col>
       </Row>
-      <Row>
+      {/* <Row>
         <Col xs={1}></Col>
         <Col xs={10}>
         <InputType 
@@ -205,12 +201,13 @@ export const Register = () => {
                         name={'password2'}
                         placeholder={'password (egg, 12345)'}
                         required={true}
+                        error={errorInputField.password2Error}
                         changeFunction={(e)=>inputHandler(e)}
                         blurFunction={(e)=>checkError(e)}
                     />
         </Col>
         <Col xs={1}></Col>
-      </Row>
+      </Row> */}
       <Row>
                 <Col xs={4}></Col>
                 <Col xs={4}>
@@ -218,7 +215,7 @@ export const Register = () => {
                         className={
                             submitActive ? 'submitDesignPassive submitDesignActive' : 'submitDesignPassive'
                         } 
-                        buttonName={'Log In'}
+                        buttonName={'Sign In'}
                     />
                 </Col>
                 <Col xs={4}></Col>
