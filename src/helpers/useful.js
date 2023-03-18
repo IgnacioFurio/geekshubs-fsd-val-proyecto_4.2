@@ -18,11 +18,15 @@ export const validate = (name, data, required) => {
 
         if(data === "" && required === true){
 
-        return {message: "Field User name required", valid: false};
+        return {message: "Field 'User' required.", valid: false};
 
-        } else if (/^{8,20}$/.test(data)) {
+        } else if (!/^(?=.{8,20}$).*/.test(data)) {
 
-            return {message: "User name must have a minimun of 8 characters and a maximun of 20 characters", valid: false};
+            return {message: "User name must have a minimum of 8 characters and a maximum of 20 characters.", valid: false};
+
+        } else if (!/^[A-Za-z][A-Za-z0-9_]/.test(data)) {
+
+            return {message: "Your name only can contain alphanumeric characters.", valid: false};
 
         };
 
@@ -32,11 +36,11 @@ export const validate = (name, data, required) => {
 
         if (data === "" && required === true) {
 
-        return {message: "Field E-mail required", valid: false};
+        return {message: "Field 'Email' required.", valid: false};
         
         } else if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(data)) {
 
-        return {message: "Invalid E-mail format", valid: false};
+        return {message: "Invalid E-mail format.", valid: false};
 
         }
 
@@ -45,14 +49,31 @@ export const validate = (name, data, required) => {
     case "password":
 
         if (data === "" && required === true) {
-        return {message: "Field Password required", valid: false};
+
+        return {message: "Field 'Password' required.", valid: false};
+
         } else if (!/.{8,}$/.test(data)) {
-        return {message: "Your password must contain at least eight characters", valid: false};
-        } else if (!/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(data)) {
-        return {message: "Your password must contain at least one letter and one number", valid: false};
-        };
-        return {message: "", valid: true};
+
+        return {message: "Your password must contain at least eight characters.", valid: false};
         
+        } else if (!/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(data)) {
+
+        return {message: "Your password must contain at least one letter and one number.", valid: false};
+        
+        };
+
+        return {message: "", valid: true};
+
+    case "password2":
+
+    if (data === "" && required === true) {
+
+        return {message: "Field 'Confirm Password' required", valid: false};
+    
+    };
+
+    return {message: "", valid: false}
+
     default:
         console.log("Fielt not recognized");
     }

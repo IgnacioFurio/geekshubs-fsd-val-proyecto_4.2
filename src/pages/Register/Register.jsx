@@ -55,8 +55,12 @@ export const Register = () => {
 
   // USEEFFECT
   useEffect(() => {
-    console.log(errorInputField.userError);
-    console.log(validInputField.userValid);
+    console.log(newRegister.password);
+    console.log(errorInputField.passwordError);
+    console.log(validInputField.passwordValid);
+    console.log(newRegister.password2);
+    console.log(errorInputField.password2Error);
+    console.log(validInputField.password2Valid);
   })
 
   // FUNCTIONS
@@ -72,21 +76,39 @@ export const Register = () => {
 
     error = check.message
 
+    
     setValidInputfield((prevState)=> (
-        {
-        ...prevState,
-        [e.target.name + 'Valid']: check.valid
-        }
-      )
-    );
-
+          {
+            ...prevState,
+            [e.target.name + 'Valid']: check.valid
+          }
+        )
+      );
+      
     setErrorInputField((prevState)=> (
-        {
-        ...prevState,
-        [e.target.name + 'Error']: check.message
-        }
-      )
-    );
+          {
+            ...prevState,
+            [e.target.name + 'Error']: check.message
+          }
+        )
+      );
+        
+    //confirm password
+    if( newRegister.password2 !== newRegister.password ){
+
+      errorInputField.password2Error = "The passwords do not match."
+      validInputField.password2Valid = false
+
+      return;
+
+    } else if (newRegister.password2 === newRegister.password) {
+
+      errorInputField.password2Error = ""
+      validInputField.password2Valid = true
+
+      return;
+
+    };
   };
 
 
