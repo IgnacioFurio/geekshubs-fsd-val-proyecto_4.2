@@ -16,23 +16,28 @@ export const Register = () => {
     {
       user: '',
       email: '',
-      password: ''
+      password: '',
+      password2: ''
     }
   );
 
     //validate the value inside the inputs
     const [validInputField, setValidInputfield] = useState(
       {
-          emailValid: false,
-          passwordValid: false
+        userValid: false,
+        emailValid: false,
+        passwordValid: false,
+        password2Valid: false
       }
   );
 
   //error messages if something is wrong inside the inputs
   const [errorInputField, setErrorInputField] = useState(
       {
-          emailError: "",
-          passwordError: ""
+        userError: '',
+        emailError: '',
+        passwordError: '',
+        password2Error: ''
       }
   )
 
