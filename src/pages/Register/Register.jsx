@@ -215,7 +215,7 @@ export const Register = () => {
                         className={
                             submitActive ? 'submitDesignPassive submitDesignActive' : 'submitDesignPassive'
                         } 
-                        buttonName={'Sign In'}
+                        buttonName={'Sign Up'}
                     />
                 </Col>
                 <Col xs={4}></Col>
