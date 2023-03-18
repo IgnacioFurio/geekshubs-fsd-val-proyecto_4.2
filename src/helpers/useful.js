@@ -18,13 +18,15 @@ export const validate = (name, data, required) => {
 
         if(data === "" && required === true){
 
-        return {message: "Field E-mail required", valid: false};
+        return {message: "Field User name required", valid: false};
 
-        } else if (/^(?=.{8,20}$)/.test(data)) {
+        } else if (/^{8,20}$/.test(data)) {
 
-            return {message: "Field E-mail required", valid: false};
+            return {message: "User name must have a minimun of 8 characters and a maximun of 20 characters", valid: false};
 
         };
+
+        return {message: "", valid: true};
 
     case "email":
 

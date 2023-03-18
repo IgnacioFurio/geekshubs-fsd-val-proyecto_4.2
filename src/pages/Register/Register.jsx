@@ -46,8 +46,8 @@ export const Register = () => {
         
     setNewRegister((prevState)=>(
             {
-                ...prevState,
-                [e.target.name]: e.target.value
+              ...prevState,
+              [e.target.name]: e.target.value
             }
         )
     );
@@ -55,8 +55,8 @@ export const Register = () => {
 
   // USEEFFECT
   useEffect(() => {
-
-
+    console.log(errorInputField.userError);
+    console.log(validInputField.userValid);
   })
 
   // FUNCTIONS
@@ -72,8 +72,23 @@ export const Register = () => {
 
     error = check.message
 
-    console.log(check);
+    setValidInputfield((prevState)=> (
+        {
+        ...prevState,
+        [e.target.name + 'Valid']: check.valid
+        }
+      )
+    );
+
+    setErrorInputField((prevState)=> (
+        {
+        ...prevState,
+        [e.target.name + 'Error']: check.message
+        }
+      )
+    );
   };
+
 
   return (
     <Container fluid className='registerDesign'>
