@@ -7,7 +7,7 @@ import './CardPatient.css';
 export const CardPatient = ({patientName, surname, DNI, phoneNumber, postCode, birth, allergy, surgery}) => {
 
     return (
-        <Container fluid className='cardPatientDesign'>
+        <Container fluid className='cardPatientgitDesign'>
             <Row>
                 <Col xs= {1}></Col>
                 <Col xs= {4}>Name:</Col>
