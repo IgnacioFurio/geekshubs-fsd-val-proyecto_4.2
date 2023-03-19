@@ -6,7 +6,8 @@ import { login, userData } from '../Slices/userSlice';
 //apicall
 import { userLogin } from '../../services/apiCalls';
 //jwt
-import { useJwt } from 'react-jwt';
+import { decodeToken } from 'react-jwt';
+
 //render
 import { InputType } from '../../common/InputType/InputType';
 import { ButtonSubmit } from '../../common/ButtonSubmit/ButtonSubmit'
@@ -150,10 +151,13 @@ export const Login = () => {
         userLogin(inputField)
             .then((backendCall) => {
 
+                let decodedToken = decodeToken(backendCall.data.data)
+
                 let backendData = {
                     token: backendCall.data.data,
                     message: backendCall.data.message,
-                    succes: backendCall.data.succes
+                    succes: backendCall.data.succes,
+                    user: decodedToken
                 };
 
                 dispatch(login({userCredentials: backendData}));
