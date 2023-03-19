@@ -19,7 +19,7 @@ export const Login = () => {
     const navigate = useNavigate();
 
     const dispatch = useDispatch();
-    // const userCredentialsRdx = useSelector(userData);
+    const dataRdx = useSelector(userData);
 
     //HOOKS
 
@@ -66,9 +66,17 @@ export const Login = () => {
     };
 
     //USEEFFECT
+    //when a component is render
+    // useEffect(() => {
 
+    //     if(dataRdx.userCredentials){
+    //         navigate("/");
+    //     };
+    // }, []);
+
+    // for every change
     useEffect(() => {
-
+        console.log(dataRdx.userCredentials);
         //functions to make submit button activated
         //in case that a field is empty
         for(let empty in inputField){
@@ -146,7 +154,6 @@ export const Login = () => {
                     message: backendCall.data.message,
                     succes: backendCall.data.succes
                 };
-                console.log(backendData.message);
 
                 dispatch(login({userCredentials: backendData.token}));
 
@@ -160,7 +167,7 @@ export const Login = () => {
 
     return (
         <Container fluid className='loginDesign'>
-            {
+            {/* {
                 welcome !== "" ? 
                 (
                     <Row>
@@ -170,7 +177,7 @@ export const Login = () => {
                         
                     </Row>
                 ) : (
-                    <>
+                    <> */}
                     <Row>
                         <Col xs={1}></Col>
                         <Col xs={10}>
@@ -216,9 +223,9 @@ export const Login = () => {
                         </Col>
                         <Col xs={4}></Col>
                     </Row>
-                    </>
+                    {/* </>
                 )
-            }
+            } */}
         </Container>
     );
 };
