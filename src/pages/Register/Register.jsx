@@ -1,12 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import { InputType } from '../../common/InputType/InputType';
-import { Login } from '../Login/Login';
+import { ButtonSubmit } from '../../common/ButtonSubmit/ButtonSubmit';
 import { validate } from '../../helpers/useful';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import './Register.css';
-import { ButtonSubmit } from '../../common/ButtonSubmit/ButtonSubmit';
 
 export const Register = () => {
 

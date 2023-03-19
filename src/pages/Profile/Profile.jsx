@@ -1,16 +1,20 @@
 import React from 'react';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import { CardPatient } from '../../common/CardPatien/CardPatient';
 
 export const Profile = () => {
     return (
-        <Container fluid>
-            <Row>
-                <Col xs={1}></Col>
-                <Col xs={10}>Card</Col>
-                <Col xs={1}></Col>
-            </Row>
-        </Container>
+        <>
+            <CardPatient 
+                patientName={'Traviesus'}
+                surname={'Maximus'}
+                DNI={'000000001A'}
+                phoneNumber={"+34 629 946 876"}
+                postCode={18057}
+                birth={'1987-02-22'}
+                allergy={''}
+                surgery={''}
+            >
+            </CardPatient>
+        </>
     )
 };
