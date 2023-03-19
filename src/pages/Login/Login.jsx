@@ -1,4 +1,11 @@
 import React, {useState, useEffect} from 'react';
+import { useNavigate } from 'react-router-dom';
+//redux
+import { useDispatch, useSelector } from 'react-redux';
+import { login, userData } from '../Slices/userSlice';
+//apicall
+import { logIn } from '../../services/apiCalls';
+//render
 import { InputType } from '../../common/InputType/InputType';
 import { ButtonSubmit } from '../../common/ButtonSubmit/ButtonSubmit'
 import { validate } from '../../helpers/useful';
@@ -8,6 +15,11 @@ import Col from 'react-bootstrap/Col';
 import './Login.css'
 
 export const Login = () => {
+
+    const navigate = useNavigate();
+
+    const dispatch = useDispatch();
+    // const userCredentialsRdx = useSelector(userData);
 
     //HOOKS
 
@@ -37,6 +49,9 @@ export const Login = () => {
 
     //activate submit button
     const [submitActive, setSubmitActive] = useState(false);
+
+    //welcome message when log in
+    const [welcome, setWelcome] = useState("");
 
     //HANDLERS
     const inputHandler = (e) => {
@@ -121,52 +136,89 @@ export const Login = () => {
         );
     };
 
+    const logUser = () => {
+
+        logIn(inputField)
+            .then((backendCall) => {
+
+                let backendData = {
+                    token: backendCall.data.data,
+                    message: backendCall.data.message,
+                    succes: backendCall.data.succes
+                };
+                console.log(backendData.message);
+
+                dispatch(login({userCredentials: backendData.token}));
+
+                setWelcome(backendData.message)
+
+                setTimeout(() => {navigate('/')}, 3000)
+            })
+            .catch((error) => {console.log(error);})
+
+    };
+
     return (
         <Container fluid className='loginDesign'>
-            <Row>
-                <Col xs={1}></Col>
-                <Col xs={10}>
-                    <InputType 
-                        className={'inputBasicDesign'}
-                        type={'email'}
-                        name={'email'}
-                        placeholder={'example@email.com'}
-                        required={true}
-                        error={errorInputField.emailError}
-                        changeFunction={(e)=>inputHandler(e)}
-                        blurFunction={(e)=>checkError(e)}
-                    />
-                </Col>
-                <Col xs={1}></Col>            
-            </Row>
-            <Row>
-                <Col xs={1}></Col>
-                <Col xs={10}>
-                    <InputType 
-                        className={'inputBasicDesign'}
-                        type={'password'}
-                        name={'password'}
-                        placeholder={'password (egg, 12345)'}
-                        required={true}
-                        error={errorInputField.passwordError}
-                        changeFunction={(e)=>inputHandler(e)}
-                        blurFunction={(e)=>checkError(e)}
-                    />
-                </Col>
-                <Col xs={1}></Col>            
-            </Row>
-            <Row>
-                <Col xs={4}></Col>
-                <Col xs={4}>
-                    <ButtonSubmit 
-                        className={
-                            submitActive ? 'submitDesignPassive submitDesignActive' : 'submitDesignPassive'
-                        } 
-                        buttonName={'Log In'}
-                    />
-                </Col>
-                <Col xs={4}></Col>
-            </Row>
+            {
+                welcome !== "" ? 
+                (
+                    <Row>
+                        <Col xs={1}></Col>
+                        <Col xs={10}>{welcome}</Col>
+                        <Col xs={1}></Col>
+                        
+                    </Row>
+                ) : (
+                    <>
+                    <Row>
+                        <Col xs={1}></Col>
+                        <Col xs={10}>
+                            <InputType 
+                                className={'inputBasicDesign'}
+                                type={'email'}
+                                name={'email'}
+                                placeholder={'example@email.com'}
+                                required={true}
+                                error={errorInputField.emailError}
+                                changeFunction={(e)=>inputHandler(e)}
+                                blurFunction={(e)=>checkError(e)}
+                                />
+                        </Col>
+                        <Col xs={1}></Col>            
+                    </Row>
+                    <Row>
+                        <Col xs={1}></Col>
+                        <Col xs={10}>
+                            <InputType 
+                                className={'inputBasicDesign'}
+                                type={'password'}
+                                name={'password'}
+                                placeholder={'password (egg, 12345)'}
+                                required={true}
+                                error={errorInputField.passwordError}
+                                changeFunction={(e)=>inputHandler(e)}
+                                blurFunction={(e)=>checkError(e)}
+                            />
+                        </Col>
+                        <Col xs={1}></Col>            
+                    </Row>
+                    <Row>
+                        <Col xs={4}></Col>
+                        <Col xs={4}>
+                            <ButtonSubmit 
+                                className={
+                                    submitActive ? 'submitDesignPassive submitDesignActive' : 'submitDesignPassive'
+                                } 
+                                buttonName={'Log In'}
+                                clickFunction={() => logUser()}
+                                />
+                        </Col>
+                        <Col xs={4}></Col>
+                    </Row>
+                    </>
+                )
+            }
         </Container>
     );
 };
