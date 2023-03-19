@@ -67,12 +67,12 @@ export const Login = () => {
 
     //USEEFFECT
     //when a component is render
-    // useEffect(() => {
+    useEffect(() => {
 
-    //     if(dataRdx.userCredentials){
-    //         navigate("/");
-    //     };
-    // }, []);
+        if(dataRdx.userCredentials.token){
+            navigate("/");
+        };
+    }, []);
 
     // for every change
     useEffect(() => {
@@ -155,7 +155,7 @@ export const Login = () => {
                     succes: backendCall.data.succes
                 };
 
-                dispatch(login({userCredentials: backendData.token}));
+                dispatch(login({userCredentials: backendData}));
 
                 setWelcome(backendData.message)
 
@@ -167,7 +167,7 @@ export const Login = () => {
 
     return (
         <Container fluid className='loginDesign'>
-            {/* {
+            {
                 welcome !== "" ? 
                 (
                     <Row>
@@ -177,7 +177,7 @@ export const Login = () => {
                         
                     </Row>
                 ) : (
-                    <> */}
+                    <>
                     <Row>
                         <Col xs={1}></Col>
                         <Col xs={10}>
@@ -223,9 +223,9 @@ export const Login = () => {
                         </Col>
                         <Col xs={4}></Col>
                     </Row>
-                    {/* </>
+                    </>
                 )
-            } */}
+            }
         </Container>
     );
 };
