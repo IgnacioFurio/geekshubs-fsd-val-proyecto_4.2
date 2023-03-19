@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { login, userData } from '../Slices/userSlice';
 //apicall
-import { logIn } from '../../services/apiCalls';
+import { userLogin } from '../../services/apiCalls';
 //render
 import { InputType } from '../../common/InputType/InputType';
 import { ButtonSubmit } from '../../common/ButtonSubmit/ButtonSubmit'
@@ -68,7 +68,7 @@ export const Login = () => {
     //USEEFFECT
     //when a component is render
     useEffect(() => {
-
+        console.log(dataRdx.userCredentials.token);
         if(dataRdx.userCredentials.token){
             navigate("/");
         };
@@ -76,7 +76,6 @@ export const Login = () => {
 
     // for every change
     useEffect(() => {
-        console.log(dataRdx.userCredentials);
         //functions to make submit button activated
         //in case that a field is empty
         for(let empty in inputField){
@@ -146,7 +145,7 @@ export const Login = () => {
 
     const logUser = () => {
 
-        logIn(inputField)
+        userLogin(inputField)
             .then((backendCall) => {
 
                 let backendData = {
@@ -161,7 +160,17 @@ export const Login = () => {
 
                 setTimeout(() => {navigate('/')}, 3000)
             })
-            .catch((error) => {console.log(error);})
+            .catch((error) => {
+
+                let backendErrorData = {
+                    message: error.response.data.message,
+                    valid: error.response.succes
+                }
+
+                errorInputField.passwordError = backendErrorData.message
+
+                setSubmitActive(false)
+            })
 
     };
 

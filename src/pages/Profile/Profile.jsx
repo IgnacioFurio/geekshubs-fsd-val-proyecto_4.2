@@ -1,20 +1,44 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+//redux
+import { useDispatch, useSelector } from 'react-redux';
+import { showPatient, patientData } from '../Slices/patientSlice';
+import { userData } from '../Slices/userSlice';
+//apicall
+import { getPatientInfo } from '../../services/apiCalls';
+//render
 import { CardPatient } from '../../common/CardPatien/CardPatient';
 
 export const Profile = () => {
+
+    const [patients, setPatients] = useState([]);
+
+    const dataRdx = useSelector(userData);
+
+    const dispatch = useDispatch();
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+
+
+        if(patients.length === 0){
+
+            getPatientInfo(dataRdx.userCredentials.token)
+                .then(
+                    result => {
+                        setPatients(result.data.data[0].Patients)
+                    }
+                )
+                .catch(error => console.log(error));
+        };
+    },[patients]);
+
+    console.log(patients);
+
     return (
         <>
-            <CardPatient 
-                patientName={'Traviesus'}
-                surname={'Maximus'}
-                DNI={'000000001A'}
-                phoneNumber={"+34 629 946 876"}
-                postCode={18057}
-                birth={'1987-02-22'}
-                allergy={''}
-                surgery={''}
-            >
-            </CardPatient>
+        {patients.map(data => {return <CardPatient key={data.DNI} dataPatient={data}></CardPatient>})}
         </>
     )
 };
