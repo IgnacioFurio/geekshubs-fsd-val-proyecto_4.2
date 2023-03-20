@@ -7,7 +7,7 @@ import { userData } from '../Slices/userSlice';
 //apicall
 import { getPatientInfo } from '../../services/apiCalls';
 //render
-import { CardPatient } from '../../common/CardPatien/CardPatient';
+import { CardPatient } from '../../common/CardPatient/CardPatient';
 import { ProfileNavigator } from '../../common/ProfileNavigator/ProfileNavigator';
 
 export const Profile = () => {
@@ -38,8 +38,13 @@ export const Profile = () => {
 
     return (
         <>
-            <ProfileNavigator></ProfileNavigator>
-            {patients.map(data => {return <CardPatient key={data.DNI} dataPatient={data}></CardPatient>})}
+            <ProfileNavigator/>
+                {patients.map(data => 
+                        {
+                        return <CardPatient key={data.DNI} dataPatient={data}></CardPatient>
+                        }
+                    )
+                }
         </>
     )
 };
