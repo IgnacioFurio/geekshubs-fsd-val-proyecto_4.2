@@ -43,19 +43,19 @@ export const Header = () => {
             dataRdx.userCredentials.token ? (
                 <Row>
                     <Col className='headerRouting'>
-                        <Navigator route={'Home'} destination={'/'}/>
-                        <Navigator route={'Profile'} destination={'/profile'}/>
-                        <Navigator route={'Register'} destination={'/register'}/>
-                        <ButtonSubmit className={'textFormat'} buttonName={'Log Out'} clickFunction={() => logOut()}></ButtonSubmit>
+                        <Navigator className={'headerNavigatorDesign'} route={'Home'} destination={'/'}/>
+                        <Navigator className={'headerNavigatorDesign'}  route={'Profile'} destination={'/profile'}/>
+                        <Navigator className={'headerNavigatorDesign'}  route={'Register'} destination={'/register'}/>
+                        <ButtonSubmit className={'textFormat'} buttonName={'Log Out'} clickFunction={() => logOut()}/>
                     </Col>
                 </Row>
             ) : (
                 <Row>
                     <Col className='headerRouting'>
-                        <Navigator route={'Home'} destination={'/'}/>
-                        <Navigator route={'Profile'} destination={'/profile'}/>
-                        <Navigator route={'Register'} destination={'/register'}/>
-                        <Navigator route={'Log In'} destination={'/login'}/>
+                        <Navigator className={'headerNavigatorDesign'}  route={'Home'} destination={'/'}/>
+                        <Navigator className={'headerNavigatorDesign'}  route={'Profile'} destination={'/profile'}/>
+                        <Navigator className={'headerNavigatorDesign'}  route={'Register'} destination={'/register'}/>
+                        <Navigator className={'headerNavigatorDesign'}  route={'Log In'} destination={'/login'}/>
                     </Col>
                 </Row>
             )
