@@ -7,7 +7,6 @@ import { login, userData } from '../Slices/userSlice';
 import { userLogin } from '../../services/apiCalls';
 //jwt
 import { decodeToken } from 'react-jwt';
-
 //render
 import { InputType } from '../../common/InputType/InputType';
 import { ButtonSubmit } from '../../common/ButtonSubmit/ButtonSubmit'
@@ -71,7 +70,7 @@ export const Login = () => {
     //USEEFFECT
     //when a component is render
     useEffect(() => {
-        console.log(dataRdx.userCredentials.token);
+
         if(dataRdx.userCredentials.token){
             navigate("/");
         };

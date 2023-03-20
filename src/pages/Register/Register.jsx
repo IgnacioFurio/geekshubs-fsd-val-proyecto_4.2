@@ -1,4 +1,8 @@
 import React, {useState, useEffect} from 'react';
+
+//apicall
+import { createUserProfile } from '../../services/apiCalls';
+//render
 import { InputType } from '../../common/InputType/InputType';
 import { ButtonSubmit } from '../../common/ButtonSubmit/ButtonSubmit';
 import { validate } from '../../helpers/useful';
@@ -14,7 +18,7 @@ export const Register = () => {
   //set data for the new register
   const [newRegister, setNewRegister] = useState(
     {
-      user: '',
+      username: '',
       email: '',
       password: '',
       // password2: ''
@@ -24,7 +28,7 @@ export const Register = () => {
     //validate the value inside the inputs
     const [validInputField, setValidInputfield] = useState(
       {
-        userValid: false,
+        usernameValid: false,
         emailValid: false,
         passwordValid: false,
         // password2Valid: false
@@ -34,7 +38,7 @@ export const Register = () => {
   //error messages if something is wrong inside the inputs
   const [errorInputField, setErrorInputField] = useState(
       {
-        userError: '',
+        usernameError: '',
         emailError: '',
         passwordError: '',
         // password2Error: ''
@@ -43,6 +47,7 @@ export const Register = () => {
 
   //activate submit button
   const [submitActive, setSubmitActive] = useState(false);
+
 
   // HANDLER 
   const inputHandler = (e) => {
@@ -59,12 +64,11 @@ export const Register = () => {
   // USEEFFECT
   useEffect(() => {
     //functions to make submit button activated
-
     //in case that a field is empty
     for(let empty in newRegister){
       
       if(newRegister[empty] === ""){
-
+        console.log(newRegister);
         setSubmitActive(false);
         
             return;
@@ -73,7 +77,7 @@ export const Register = () => {
 
     //in case that a field is not valid
     for(let valid in validInputField){
-
+      console.log(validInputField);
       if(validInputField[valid] === false){
         
         setSubmitActive(false);
@@ -84,15 +88,15 @@ export const Register = () => {
     //in case that a field shows an error
     for(let error in errorInputField){
 
-        if(errorInputField[error]){
+      if(errorInputField[error]){
           
             setSubmitActive(false);
             return;
           };
     };
-    
-    //in case the data it's full validated
-    setSubmitActive(true);
+      
+      //in case the data it's full validated
+      setSubmitActive(true);
 });
 
   // FUNCTIONS
@@ -140,6 +144,11 @@ export const Register = () => {
 
   //   };
 
+  const signUpUser = () => {
+    createUserProfile(newRegister)
+      .then(() => {})
+      .catch(error => console.log(error))
+  };
 
   return (
     <Container fluid className='registerDesign'>
@@ -149,7 +158,7 @@ export const Register = () => {
         <InputType 
                         className={'inputBasicDesign'}
                         type={'text'}
-                        name={'user'}
+                        name={'username'}
                         placeholder={'Eddieden06'}
                         required={true}
                         error={errorInputField.userError}
@@ -215,6 +224,9 @@ export const Register = () => {
                             submitActive ? 'submitDesignPassive submitDesignActive' : 'submitDesignPassive'
                         } 
                         buttonName={'Sign Up'}
+                        clickFunction={
+                          submitActive ? () => signUpUser() : () => {}
+                        }
                     />
                 </Col>
                 <Col xs={4}></Col>

@@ -15,6 +15,7 @@ export const validate = (name, data, required) => {
 
     //     return {message: "", validated: true};
     case "user":
+    case "username":
 
         if(data === "" && required === true){
 
@@ -75,6 +76,6 @@ export const validate = (name, data, required) => {
     return {message: "", valid: false}
 
     default:
-        console.log("Fielt not recognized");
+        console.log("Error not recognized");
     }
 };

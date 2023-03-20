@@ -11,6 +11,7 @@ import { CardPatient } from '../../common/CardPatien/CardPatient';
 
 export const Profile = () => {
 
+    //HOOKS
     const [patients, setPatients] = useState([]);
 
     const dataRdx = useSelector(userData);
@@ -19,8 +20,8 @@ export const Profile = () => {
 
     const navigate = useNavigate();
 
+    //USEEFFECT
     useEffect(() => {
-
 
         if(patients.length === 0){
 
@@ -33,8 +34,6 @@ export const Profile = () => {
                 .catch(error => console.log(error));
         };
     },[patients]);
-
-    console.log(patients);
 
     return (
         <>
