@@ -2,10 +2,13 @@ import React, { useState, useEffect }  from 'react';
 import { useNavigate } from 'react-router-dom';
 //  redux 
 import { useDispatch, useSelector } from 'react-redux';
-import { userData } from '../../pages/Slices/userSlice';
+import { userout, userData } from '../../pages/Slices/userSlice';
 // render 
 import { Navigator } from '../Navigator/Navigator';
 import { ButtonSubmit } from '../ButtonSubmit/ButtonSubmit';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import './Header.css'
 
 export const Header = () => {
@@ -14,38 +17,49 @@ export const Header = () => {
 
     const  dispatch = useDispatch();
 
+    const navigate = useNavigate();
+
     useEffect(() => {
         // token
-        console.log(dataRdx.userCredentials.token);
+        console.log(dataRdx?.userCredentials?.token);
         // user
-        console.log(dataRdx.userCredentials.user);
+        console.log(dataRdx?.userCredentials?.user);
         // roleId
-        console.log(dataRdx.userCredentials.user.roleID);
+        console.log(dataRdx?.userCredentials?.user?.roleId);
     });
 
     const logOut = () => {
-        console.log('hello world');
+        
+        let backendData = {}
+
+        dispatch(userout({userCredentials: backendData}));
+
+        setTimeout(() => {navigate('/')}, 1000)
     };
 
     return (
-    <div className='headerDesign'>
+    <Container fluid className='headerDesign'>
         {
-            dataRdx?.userCredentials?.token ? (
-                <div className='headerRouting'>
-                    <Navigator route={'Home'} destination={'/'}/>
-                    <Navigator route={'Profile'} destination={'/profile'}/>
-                    <Navigator route={'Register'} destination={'/register'}/>
-                    <ButtonSubmit className={'textFormat'} buttonName={'Log Out'} clickFunction={() => logOut()}></ButtonSubmit>
-                </div>
+            dataRdx.userCredentials.token ? (
+                <Row>
+                    <Col className='headerRouting'>
+                        <Navigator route={'Home'} destination={'/'}/>
+                        <Navigator route={'Profile'} destination={'/profile'}/>
+                        <Navigator route={'Register'} destination={'/register'}/>
+                        <ButtonSubmit className={'textFormat'} buttonName={'Log Out'} clickFunction={() => logOut()}></ButtonSubmit>
+                    </Col>
+                </Row>
             ) : (
-                <div className='headerRouting'>
-                    <Navigator route={'Home'} destination={'/'}/>
-                    <Navigator route={'Profile'} destination={'/profile'}/>
-                    <Navigator route={'Register'} destination={'/register'}/>
-                    <Navigator route={'Log In'} destination={'/login'}/>
-                </div>
+                <Row>
+                    <Col className='headerRouting'>
+                        <Navigator route={'Home'} destination={'/'}/>
+                        <Navigator route={'Profile'} destination={'/profile'}/>
+                        <Navigator route={'Register'} destination={'/register'}/>
+                        <Navigator route={'Log In'} destination={'/login'}/>
+                    </Col>
+                </Row>
             )
         }
-    </div>
+    </Container>
     )
 };
