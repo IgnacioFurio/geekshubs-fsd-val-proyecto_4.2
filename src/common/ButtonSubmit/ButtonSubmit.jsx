@@ -5,7 +5,7 @@ export const ButtonSubmit = ({className, buttonName, clickFunction}) => {
 
     return (
         <div className={className} onClick={clickFunction}>
-            <h6>{buttonName}</h6>
+            {buttonName}
         </div>
     );
 };
