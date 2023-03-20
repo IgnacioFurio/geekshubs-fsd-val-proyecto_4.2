@@ -147,7 +147,15 @@ export const Register = () => {
   const signUpUser = () => {
     createUserProfile(newRegister)
       .then(() => {})
-      .catch(error => console.log(error))
+      .catch(error => {
+        console.log(error.response.data.message);
+        let backendErrorData = {
+          message: error.response.data.message,
+          valid: error.response.succes
+      }
+
+      errorInputField.passwordError = backendErrorData.message
+      })
   };
 
   return (
