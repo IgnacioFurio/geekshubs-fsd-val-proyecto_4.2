@@ -8,6 +8,8 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { useNavigate } from 'react-router-dom';
+import { getPatientAppointment } from '../../services/apiCalls';
+import { CardAppointment } from '../../common/CardAppointment/CardAppointment';
 
 export const Appointments = () => {
 
@@ -22,14 +24,35 @@ export const Appointments = () => {
 
     //USEEFFECT
     useEffect(() => {
-        console.log(patientDataRdx);
-    });
+
+        if(appointments.length === 0){
+
+
+            getPatientAppointment(patientDataRdx.userCredentials.token)
+            .then(
+                result => {
+                    setAppointments(result.data.data)
+                }
+
+                
+                )
+                .catch(error => console.log(error))
+        };
+
+    }, [appointments]);
+
+useEffect(() => {
+    // console.log(appointments);
+});
     return (
         <>
             <ProfileNavigator/>
-            <Container>
-
-            </Container>
+                {appointments.map(data =>
+                        {
+                            return <CardAppointment key={data.id} dataAppointment={data}/>
+                        }
+                    )
+                }
         </>
     );
 };

@@ -1,0 +1,13 @@
+.allInfoDesign{
+    border: 0.1em solid cadetblue;
+    border-radius: 0.2em;
+}
+
+.appointmentInfoDesign{
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+
+}
+.smText{
+    font-size: small;
+}

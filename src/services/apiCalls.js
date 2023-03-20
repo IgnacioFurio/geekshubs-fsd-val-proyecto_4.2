@@ -22,3 +22,14 @@ export const getPatientInfo = async (token) => {
 
     return await axios.get(`${root}/patient/profile`, config);
 };
+
+export const getPatientAppointment = async (token) => {
+
+    let config = {
+        headers: {
+            'Authorization': 'Bearer '+ token,  
+        }
+    }
+
+    return await axios.get(`${root}/patient/appointment/`, config)
+};

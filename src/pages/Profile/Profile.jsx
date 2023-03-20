@@ -41,7 +41,7 @@ export const Profile = () => {
             <ProfileNavigator/>
                 {patients.map(data => 
                         {
-                        return <CardPatient key={data.DNI} dataPatient={data}></CardPatient>
+                            return <CardPatient key={data.DNI} dataPatient={data}></CardPatient>
                         }
                     )
                 }
