@@ -33,3 +33,9 @@ export const getPatientAppointment = async (token) => {
 
     return await axios.get(`${root}/patient/appointment/`, config)
 };
+
+export const createPatient = async (body) => {
+
+    return await axios.post(`${root}/auth/register`, body)
+
+};

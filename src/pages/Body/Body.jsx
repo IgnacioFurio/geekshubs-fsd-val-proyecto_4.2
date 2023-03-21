@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { Appointments } from '../Appointments/Appointments';
+import { CreatePatient } from '../CreatePatient/CreatePatient';
 import { Home } from '../Home/Home';
 import { Login } from '../Login/Login';
 import { Profile } from '../Profile/Profile';
@@ -15,6 +16,7 @@ export const Body = () => {
                 <Route path='/register' element={ <Register />} />
                 <Route path='/profile' element={ <Profile />} />
                 <Route path='/appointments' element={ <Appointments />} />
+                <Route path='/profile/patient/newpatient' element={ <CreatePatient />} />
             </Routes>
         </>
     );
