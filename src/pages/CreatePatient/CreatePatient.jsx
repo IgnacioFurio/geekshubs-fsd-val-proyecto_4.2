@@ -1,4 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+//redux
+import { useDispatch, useSelector } from 'react-redux';
+import { userData } from '../Slices/userSlice';
+// apicall
+import { createPatient } from '../../services/apiCalls';
 //helper
 import { validate } from '../../helpers/useful';
 //render
@@ -10,6 +16,10 @@ import Col from 'react-bootstrap/Col';
 
 export const CreatePatient = () => {
 
+    const userRdx = useSelector(userData);
+    
+    const navigate = useNavigate();
+
     //HOOKS
     //set data for the new patient
     const [newPatient, setNewPatient] = useState(
@@ -20,6 +30,8 @@ export const CreatePatient = () => {
             phone_number: "",
             post_code: "",
             birth: "",
+            allergy: "",
+            surgery: ""
         }
     );
 
@@ -50,7 +62,11 @@ export const CreatePatient = () => {
         }
     );
 
+    // new patient activable button
     const [submitActive, setSubmitActive] = useState(false);
+
+    // message when new patient is create
+    const [userMessage, setUserMessage] = useState("");
 
     //HANDLER
     const inputHandler = (e) => {
@@ -62,6 +78,8 @@ export const CreatePatient = () => {
                 }
             )
         );
+
+        checkError(e)
     };
 
     //USEEFFECT
@@ -70,9 +88,6 @@ export const CreatePatient = () => {
     useEffect(() => {
         //functions to make submit button activated
         //in case that a field shows an error
-        console.log(newPatient);
-        console.log(errorInputField);
-        console.log(validInputField);
         for(let error in errorInputField){
             
             if(errorInputField[error]){
@@ -92,7 +107,6 @@ export const CreatePatient = () => {
             };
         };
     
-    console.log(submitActive);
     //in case the data it's full validated
     setSubmitActive(true);
 });
@@ -100,6 +114,7 @@ export const CreatePatient = () => {
 
     //FUNCTIONS 
 
+    // checkerror function
     const checkError = (e) => {
 
         let error = "";
@@ -117,8 +132,8 @@ export const CreatePatient = () => {
                     ...prevState,
                     [e.target.name + 'Valid']: check.valid
                 }
-                )
-            );
+            )
+        );
     
         setErrorInputField((prevState) => (
                 {
@@ -126,161 +141,186 @@ export const CreatePatient = () => {
                 [e.target.name + 'Error']: error
                 }
             )
-            );
-
-        //in case the data it's full validated
-        setSubmitActive(true);
+        );
     };
 
-    const createNewPatient = () => {
-        console.log('hello world');
+    // create new patient function
+    const newPatientCreation = () => {
+
+        createPatient(newPatient, userRdx.userCredentials.token)
+            .then((backendCall) => {
+
+                let backendData = {
+                    message: backendCall.data.message
+                };
+
+                setUserMessage(backendData.message);
+
+                setTimeout(() => {navigate('/profile')}, 2000)
+            })
+            .catch(error => console.log(error))
     };
 
     return (
         <Container>
-            <Row>
-                <Col xs={1}></Col>
-                <Col xs={10}>
-                <InputType 
-                        className={'inputBasicDesign'}
-                        type={'text'}
-                        name={'name'}
-                        placeholder={'Traviesus'}
-                        required={true}
-                        error={errorInputField.nameError}
-                        changeFunction={(e)=>inputHandler(e)}
-                        blurFunction={(e)=>checkError(e)}
-                    />
-                </Col>
-                <Col xs={1}></Col>
-            </Row>
-            <Row>
-                <Col xs={1}></Col>
-                <Col xs={10}>
-                <InputType 
-                        className={'inputBasicDesign'}
-                        type={'text'}
-                        name={'surname'}
-                        placeholder={'Maximus'}
-                        required={true}
-                        error={errorInputField.surnameError}
-                        changeFunction={(e)=>inputHandler(e)}
-                        blurFunction={(e)=>checkError(e)}
-                    />
-                </Col>
-                <Col xs={1}></Col>
-            </Row>
-            <Row>
-                <Col xs={1}></Col>
-                <Col xs={10}>
-                <InputType 
-                        className={'inputBasicDesign'}
-                        type={'text'}
-                        name={'DNI'}
-                        placeholder={'11111111A'}
-                        required={true}
-                        error={errorInputField.DNIError}
-                        changeFunction={(e)=>inputHandler(e)}
-                        blurFunction={(e)=>checkError(e)}
-                    />
-                </Col>
-                <Col xs={1}></Col>
-            </Row>
-            <Row>
-                <Col xs={1}></Col>
-                <Col xs={10}>
-                <InputType 
-                        className={'inputBasicDesign'}
-                        type={'text'}
-                        name={'phone_number'}
-                        placeholder={'+34 666 555 444'}
-                        required={true}
-                        error={errorInputField.phone_numberError}
-                        changeFunction={(e)=>inputHandler(e)}
-                        blurFunction={(e)=>checkError(e)}
-                    />
-                </Col>
-                <Col xs={1}></Col>
-            </Row>
-            <Row>
-                <Col xs={1}></Col>
-                <Col xs={10}>
-                <InputType 
-                        className={'inputBasicDesign'}
-                        type={'number'}
-                        name={'post_code'}
-                        placeholder={'11011'}
-                        required={true}
-                        error={errorInputField.post_codeError}
-                        changeFunction={(e)=>inputHandler(e)}
-                        blurFunction={(e)=>checkError(e)}
-                    />
-                </Col>
-                <Col xs={1}></Col>
-            </Row>
-            <Row>
-                <Col xs={1}></Col>
-                <Col xs={10}>
-                <InputType 
-                        className={'inputBasicDesign'}
-                        type={'date'}
-                        name={'birth'}
-                        placeholder={'yyyy-mm-dd'}
-                        required={true}
-                        error={errorInputField.birthError}
-                        changeFunction={(e)=>inputHandler(e)}
-                        blurFunction={(e)=>checkError(e)}
-                    />
-                </Col>
-                <Col xs={1}></Col>
-            </Row>
-            <Row>
-                <Col xs={1}></Col>
-                <Col xs={10}>
-                <InputType 
-                        className={'inputBasicDesign'}
-                        type={'text'}
-                        name={'allergy'}
-                        placeholder={'Type your allergies here (egg: nikel)'}
-                        required={false}
-                        error={errorInputField.allergyError}
-                        changeFunction={(e)=>inputHandler(e)}
-                        blurFunction={(e)=>checkError(e)}
-                    />
-                </Col>
-                <Col xs={1}></Col>
-            </Row>
-            <Row>
-                <Col xs={1}></Col>
-                <Col xs={10}>
-                <InputType 
-                        className={'inputBasicDesign'}
-                        type={'text'}
-                        name={'surgery'}
-                        placeholder={'Type your previous interventions here'}
-                        required={false}
-                        error={errorInputField.surgeryError}
-                        changeFunction={(e)=>inputHandler(e)}
-                        blurFunction={(e)=>checkError(e)}
-                    />
-                </Col>
-                <Col xs={1}></Col>
-            </Row>
-            <Row>
-                <Col xs={4}></Col>
-                <Col xs={4}>
-                    <ButtonSubmit 
-                        className={
-                            submitActive ? 'submitDesignPassive submitDesignActive' : 'submitDesignPassive'
-                        } 
-                        buttonName={'New Patient'}
-                        clickFunction={
-                            submitActive ? () => createNewPatient() : () => {}
-                        }
-                    />
-                </Col>
-                <Col xs={4}></Col>
-            </Row>
+            {
+                userMessage !== "" ?
+                (
+                    <Row>
+                    <Col xs={1}></Col>
+                    <Col xs={10}>{userMessage}</Col>
+                    <Col xs={1}></Col>
+                    
+                </Row>
+                ) : (
+                    <>
+                    <Row>
+                        <Col xs={1}></Col>
+                        <Col xs={10}>
+                        <InputType 
+                                className={'inputBasicDesign'}
+                                type={'text'}
+                                name={'name'}
+                                placeholder={'Traviesus'}
+                                required={true}
+                                error={errorInputField.nameError}
+                                changeFunction={(e)=>inputHandler(e)}
+                                blurFunction={(e)=>checkError(e)}
+                                />
+                        </Col>
+                        <Col xs={1}></Col>
+                    </Row>
+                    <Row>
+                        <Col xs={1}></Col>
+                        <Col xs={10}>
+                        <InputType 
+                                className={'inputBasicDesign'}
+                                type={'text'}
+                                name={'surname'}
+                                placeholder={'Maximus'}
+                                required={true}
+                                error={errorInputField.surnameError}
+                                changeFunction={(e)=>inputHandler(e)}
+                                blurFunction={(e)=>checkError(e)}
+                                />
+                        </Col>
+                        <Col xs={1}></Col>
+                    </Row>
+                    <Row>
+                        <Col xs={1}></Col>
+                        <Col xs={10}>
+                        <InputType 
+                                className={'inputBasicDesign'}
+                                type={'text'}
+                                name={'DNI'}
+                                placeholder={'11111111A'}
+                                required={true}
+                                error={errorInputField.DNIError}
+                                changeFunction={(e)=>inputHandler(e)}
+                                blurFunction={(e)=>checkError(e)}
+                                />
+                        </Col>
+                        <Col xs={1}></Col>
+                    </Row>
+                    <Row>
+                        <Col xs={1}></Col>
+                        <Col xs={10}>
+                        <InputType 
+                                className={'inputBasicDesign'}
+                                type={'text'}
+                                name={'phone_number'}
+                                placeholder={'+34 666 555 444'}
+                                required={true}
+                                error={errorInputField.phone_numberError}
+                                changeFunction={(e)=>inputHandler(e)}
+                                blurFunction={(e)=>checkError(e)}
+                            />
+                        </Col>
+                        <Col xs={1}></Col>
+                    </Row>
+                    <Row>
+                        <Col xs={1}></Col>
+                        <Col xs={10}>
+                        <InputType 
+                                className={'inputBasicDesign'}
+                                type={'number'}
+                                name={'post_code'}
+                                placeholder={'11011'}
+                                required={true}
+                                error={errorInputField.post_codeError}
+                                changeFunction={(e)=>inputHandler(e)}
+                                blurFunction={(e)=>checkError(e)}
+                            />
+                        </Col>
+                        <Col xs={1}></Col>
+                    </Row>
+                    <Row>
+                        <Col xs={1}></Col>
+                        <Col xs={10}>
+                        <InputType 
+                                className={'inputBasicDesign'}
+                                type={'date'}
+                                name={'birth'}
+                                placeholder={'yyyy-mm-dd'}
+                                required={true}
+                                error={errorInputField.birthError}
+                                changeFunction={(e)=>inputHandler(e)}
+                                blurFunction={(e)=>checkError(e)}
+                                />
+                        </Col>
+                        <Col xs={1}></Col>
+                    </Row>
+                    <Row>
+                        <Col xs={1}></Col>
+                        <Col xs={10}>
+                        <InputType 
+                                className={'inputBasicDesign'}
+                                type={'text'}
+                                name={'allergy'}
+                                placeholder={'Type your allergies here (egg: nikel)'}
+                                required={false}
+                                error={errorInputField.allergyError}
+                                changeFunction={(e)=>inputHandler(e)}
+                                blurFunction={(e)=>checkError(e)}
+                            />
+                        </Col>
+                        <Col xs={1}></Col>
+                    </Row>
+                    <Row>
+                        <Col xs={1}></Col>
+                        <Col xs={10}>
+                        <InputType 
+                                className={'inputBasicDesign'}
+                                type={'text'}
+                                name={'surgery'}
+                                placeholder={'Type your previous interventions here'}
+                                required={false}
+                                error={errorInputField.surgeryError}
+                                changeFunction={(e)=>inputHandler(e)}
+                                blurFunction={(e)=>checkError(e)}
+                                />
+                        </Col>
+                        <Col xs={1}></Col>
+                    </Row>
+                    <Row>
+                        <Col xs={4}></Col>
+                        <Col xs={4}>
+                            <ButtonSubmit 
+                                className={
+                                    submitActive ? 'submitDesignPassive submitDesignActive' : 'submitDesignPassive'
+                                } 
+                                buttonName={'New Patient'}
+                                clickFunction={
+                                    submitActive ? () => newPatientCreation() : () => {}
+                                }
+                                />
+                        </Col>
+                        <Col xs={4}></Col>
+                    </Row>
+                    </>
+                )
+            }
+            
         </Container>
     );
 };

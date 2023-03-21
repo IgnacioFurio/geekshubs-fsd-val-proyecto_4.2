@@ -59,6 +59,8 @@ export const Register = () => {
             }
         )
     );
+
+    checkError(e);
 };
 
   // USEEFFECT
@@ -171,6 +173,7 @@ export const Register = () => {
     };
   }
 
+  //sing up function
   const signUpUser = () => {
     createUserProfile(newRegister)
       .then(() => {})
