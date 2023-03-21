@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 //render
 import { InputType } from '../../common/InputType/InputType';
+import { ButtonSubmit } from '../../common/ButtonSubmit/ButtonSubmit';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -48,6 +49,14 @@ export const CreatePatient = () => {
             surgeryError:""
         }
     );
+
+    const [submitActive, setSubmitActive] = useState(false);
+
+    //FUNCTIONS 
+
+    const createNewPatient = () => {
+        console.log('hello world');
+    };
 
     return (
         <Container>
@@ -178,6 +187,21 @@ export const CreatePatient = () => {
                     />
                 </Col>
                 <Col xs={1}></Col>
+            </Row>
+            <Row>
+                <Col xs={4}></Col>
+                <Col xs={4}>
+                    <ButtonSubmit 
+                        className={
+                            submitActive ? 'submitDesignPassive submitDesignActive' : 'submitDesignPassive'
+                        } 
+                        buttonName={'New Patient'}
+                        clickFunction={
+                            submitActive ? () => createNewPatient() : () => {}
+                        }
+                    />
+                </Col>
+                <Col xs={4}></Col>
             </Row>
         </Container>
     );

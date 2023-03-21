@@ -192,15 +192,15 @@ export const Register = () => {
         <Col xs={1}></Col>
         <Col xs={10}>
         <InputType 
-                        className={'inputBasicDesign'}
-                        type={'text'}
-                        name={'username'}
-                        placeholder={'Eddieden06'}
-                        required={true}
-                        error={errorInputField.usernameError}
-                        changeFunction={(e)=>inputHandler(e)}
-                        blurFunction={(e)=>checkError(e)}
-                    />
+            className={'inputBasicDesign'}
+            type={'text'}
+            name={'username'}
+            placeholder={'Eddieden06'}
+            required={true}
+            error={errorInputField.usernameError}
+            changeFunction={(e)=>inputHandler(e)}
+            blurFunction={(e)=>checkError(e)}
+        />
         </Col>
         <Col xs={1}></Col>
       </Row>
@@ -208,15 +208,15 @@ export const Register = () => {
         <Col xs={1}></Col>
         <Col xs={10}>
         <InputType 
-                        className={'inputBasicDesign'}
-                        type={'email'}
-                        name={'email'}
-                        placeholder={'example@email.com'}
-                        required={true}
-                        error={errorInputField.emailError}
-                        changeFunction={(e)=>inputHandler(e)}
-                        blurFunction={(e)=>checkError(e)}
-                    />
+            className={'inputBasicDesign'}
+            type={'email'}
+            name={'email'}
+            placeholder={'example@email.com'}
+            required={true}
+            error={errorInputField.emailError}
+            changeFunction={(e)=>inputHandler(e)}
+            blurFunction={(e)=>checkError(e)}
+        />
         </Col>
         <Col xs={1}></Col>
       </Row>
@@ -224,49 +224,49 @@ export const Register = () => {
         <Col xs={1}></Col>
         <Col xs={10}>
         <InputType 
-                        className={'inputBasicDesign'}
-                        type={'password'}
-                        name={'password'}
-                        placeholder={'password (egg, 12345)'}
-                        required={true}
-                        error={errorInputField.passwordError}
-                        changeFunction={(e)=>inputHandler(e)}
-                        blurFunction={(e)=>checkError(e)}
-                    />
+            className={'inputBasicDesign'}
+            type={'password'}
+            name={'password'}
+            placeholder={'password (egg, 12345)'}
+            required={true}
+            error={errorInputField.passwordError}
+            changeFunction={(e)=>inputHandler(e)}
+            blurFunction={(e)=>checkError(e)}
+        />
         </Col>
         <Col xs={1}></Col>
       </Row>
       <Row>
         <Col xs={1}></Col>
         <Col xs={10}>
-        <InputType 
-                        className={'inputBasicDesign'}
-                        type={'password'}
-                        name={'password2'}
-                        placeholder={'password (egg, 12345)'}
-                        required={true}
-                        error={errorInputField.password2Error}
-                        changeFunction={(e)=>inputHandler(e)}
-                        blurFunction={(e)=>confirmPass(e)}
-                    />
+          <InputType 
+              className={'inputBasicDesign'}
+              type={'password'}
+              name={'password2'}
+              placeholder={'password (egg, 12345)'}
+              required={true}
+              error={errorInputField.password2Error}
+              changeFunction={(e)=>inputHandler(e)}
+              blurFunction={(e)=>confirmPass(e)}
+          />
         </Col>
         <Col xs={1}></Col>
       </Row>
       <Row>
-                <Col xs={4}></Col>
-                <Col xs={4}>
-                    <ButtonSubmit 
-                        className={
-                            submitActive ? 'submitDesignPassive submitDesignActive' : 'submitDesignPassive'
-                        } 
-                        buttonName={'Sign Up'}
-                        clickFunction={
-                          submitActive ? () => signUpUser() : () => {}
-                        }
-                    />
-                </Col>
-                <Col xs={4}></Col>
-            </Row>
+          <Col xs={4}></Col>
+          <Col xs={4}>
+              <ButtonSubmit 
+                  className={
+                      submitActive ? 'submitDesignPassive submitDesignActive' : 'submitDesignPassive'
+                  } 
+                  buttonName={'Sign Up'}
+                  clickFunction={
+                    submitActive ? () => signUpUser() : () => {}
+                  }
+              />
+          </Col>
+          <Col xs={4}></Col>
+      </Row>
     </Container>
   );
 };
