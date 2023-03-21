@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react'
+//helper
+import { validate } from '../../helpers/useful';
 //render
 import { InputType } from '../../common/InputType/InputType';
 import { ButtonSubmit } from '../../common/ButtonSubmit/ButtonSubmit';
@@ -52,7 +54,57 @@ export const CreatePatient = () => {
 
     const [submitActive, setSubmitActive] = useState(false);
 
+    //HANDLER
+    const inputHandler = (e) => {
+
+        setNewPatient((prevState)=>(
+                {
+                    ...prevState,
+                    [e.target.name]: e.target.value
+                }
+            )
+        );
+    };
+
+    //USEEFFECT
+
+    useEffect(() => {
+            console.log(newPatient);
+            console.log(validInputField);
+            console.log(errorInputField);
+        }
+    );
+
     //FUNCTIONS 
+
+    const checkError = (e) => {
+
+        let error = "";
+    
+        let check = validate(
+            e.target.name,
+            e.target.value,
+            e.target.required
+            );
+            
+        error = check.message
+    
+        setValidInputfield((prevState) => (
+                {
+                    ...prevState,
+                    [e.target.name + 'Valid']: check.valid
+                }
+                )
+            );
+    
+        setErrorInputField((prevState) => (
+                {
+                ...prevState,
+                [e.target.name + 'Error']: error
+                }
+            )
+            );
+        };
 
     const createNewPatient = () => {
         console.log('hello world');
@@ -115,7 +167,7 @@ export const CreatePatient = () => {
                         className={'inputBasicDesign'}
                         type={'text'}
                         name={'phone_number'}
-                        placeholder={'Maximus'}
+                        placeholder={'+34 666 555 444'}
                         required={true}
                         error={errorInputField.phone_numberError}
                         changeFunction={(e)=>inputHandler(e)}
@@ -163,8 +215,8 @@ export const CreatePatient = () => {
                         className={'inputBasicDesign'}
                         type={'text'}
                         name={'allergy'}
-                        placeholder={'none know'}
-                        required={true}
+                        placeholder={'Type your allergies here (egg: nikel)'}
+                        required={false}
                         error={errorInputField.allergyError}
                         changeFunction={(e)=>inputHandler(e)}
                         blurFunction={(e)=>checkError(e)}
@@ -179,8 +231,8 @@ export const CreatePatient = () => {
                         className={'inputBasicDesign'}
                         type={'text'}
                         name={'surgery'}
-                        placeholder={'molar extraction'}
-                        required={true}
+                        placeholder={'Type your previous interventions here'}
+                        required={false}
                         error={errorInputField.surgeryError}
                         changeFunction={(e)=>inputHandler(e)}
                         blurFunction={(e)=>checkError(e)}
