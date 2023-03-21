@@ -11,7 +11,6 @@ export const CardAppointment = ({dataAppointment}) => {
 
     const patientAppointments = dataAppointment.Appointments;
 
-    // console.log(dataAppointment);
     return (
         <Container fluid className='cardAppointmentDesign'>
             <Row>
@@ -35,7 +34,7 @@ export const CardAppointment = ({dataAppointment}) => {
             {
                 patientAppointments.map(data => 
                     {
-                        return <AppointmentsInfo key={data.DNI} dataPatient={data}/>
+                        return <AppointmentsInfo key={data.id} dataPatient={data}/>
                     }
                     )
                 }
