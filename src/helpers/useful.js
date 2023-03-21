@@ -10,7 +10,7 @@ export const validate = (name, data, required) => {
         
         return {message: "Please fill the field", valid: false};
 
-        } else if (!/[a-z]/.test(data)) {
+        } else if (!/[a-zA-Z]/.test(data)) {
 
         return {message: "Please fill with a valid text", valid: false};
 
@@ -130,6 +130,36 @@ export const validate = (name, data, required) => {
 
     return {message: "", valid: true};
     
+    // DATE ONLY YYYY-MM-DD
+
+    case "birth":
+
+        if (data === "" && required === true) {
+
+            return {message: "Field 'Post code' required", valid: false};
+
+        }
+
+    return {message: "", valid: true};
+    
+    // NON REQUIRED TEXT ONLY FIELD
+
+    case "allergy":
+    case "surgery":
+
+
+        if (data === "" && required === false) {
+            
+            return {message: "", valid: true};
+
+        }else if (!/[a-zA-Z]/.test(data)) {
+
+            return {message: "Only latin character allowed", valid: false};
+
+        };
+
+    return {message: "", valid: true};
+
 
 
     default:

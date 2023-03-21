@@ -20,8 +20,6 @@ export const CreatePatient = () => {
             phone_number: "",
             post_code: "",
             birth: "",
-            allergy: "",
-            surgery: ""
         }
     );
 
@@ -34,8 +32,8 @@ export const CreatePatient = () => {
             phone_numberValid: false,
             post_codeValid: false,
             birthValid: false,
-            allergyValid: false,
-            surgeryValid: false
+            allergyValid: true,
+            surgeryValid: true
         }
     );
     //error messages if something is wrong inside the inputs
@@ -68,12 +66,37 @@ export const CreatePatient = () => {
 
     //USEEFFECT
 
+  // USEEFFECT
     useEffect(() => {
-            console.log(newPatient);
-            console.log(validInputField);
-            console.log(errorInputField);
-        }
-    );
+        //functions to make submit button activated
+        //in case that a field shows an error
+        console.log(newPatient);
+        console.log(errorInputField);
+        console.log(validInputField);
+        for(let error in errorInputField){
+            
+            if(errorInputField[error]){
+                
+                setSubmitActive(false);
+                return;
+            };
+        };
+
+        //in case that a field is not valid
+        for(let valid in validInputField){
+            
+            if(validInputField[valid] === false){
+                
+                setSubmitActive(false);
+                return;
+            };
+        };
+    
+    console.log(submitActive);
+    //in case the data it's full validated
+    setSubmitActive(true);
+});
+
 
     //FUNCTIONS 
 
@@ -88,7 +111,7 @@ export const CreatePatient = () => {
             );
             
         error = check.message
-    
+
         setValidInputfield((prevState) => (
                 {
                     ...prevState,
@@ -104,7 +127,10 @@ export const CreatePatient = () => {
                 }
             )
             );
-        };
+
+        //in case the data it's full validated
+        setSubmitActive(true);
+    };
 
     const createNewPatient = () => {
         console.log('hello world');
@@ -199,7 +225,7 @@ export const CreatePatient = () => {
                         className={'inputBasicDesign'}
                         type={'date'}
                         name={'birth'}
-                        placeholder={'1991-12-12'}
+                        placeholder={'yyyy-mm-dd'}
                         required={true}
                         error={errorInputField.birthError}
                         changeFunction={(e)=>inputHandler(e)}
