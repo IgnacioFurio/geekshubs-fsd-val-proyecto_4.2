@@ -12,9 +12,9 @@ import './ProfileNavigator.css'
             <Row>
                 <Col className='profileTabs'>
                     <Navigator className={'passiveTab'} route={'Patients'} destination={'/profile'}/>
-                    <Navigator className={'passiveTab'} route={'Appointments'} destination={'/appointments'}/>
+                    <Navigator className={'passiveTab'} route={'Appointments'} destination={'/profile/appointments'}/>
                     <Navigator className={'passiveTab'} route={'Info'} destination={'/profile'}/>
-                    <Navigator className={'passiveTab'} route={'User'} destination={'/profile'}/>
+                    <Navigator className={'passiveTab'} route={'User'} destination={'/profile/user'}/>
                 </Col>
             </Row>
         </Container>

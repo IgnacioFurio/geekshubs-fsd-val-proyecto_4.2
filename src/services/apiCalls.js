@@ -12,6 +12,30 @@ export const userLogin = async (body) => {
     return await axios.post(`${root}/auth/login`, body)
 };
 
+export const getUserProfile = async (token) => {
+
+    let config = {
+        headers: {
+            'Authorization': 'Bearer '+ token,  
+        }
+    }
+
+    return await axios.get(`${root}/user/profile`, config);
+
+};
+
+export const createPatient = async (body, token) => {
+
+    let config = {
+        headers: {
+            'Authorization': 'Bearer '+ token,  
+        }
+    }
+
+    return await axios.post(`${root}/patient/new`, body, config)
+
+};
+
 export const getPatientInfo = async (token) => {
 
     let config = {
@@ -32,16 +56,4 @@ export const getPatientAppointment = async (token) => {
     }
 
     return await axios.get(`${root}/patient/appointment/`, config)
-};
-
-export const createPatient = async (body, token) => {
-
-    let config = {
-        headers: {
-            'Authorization': 'Bearer '+ token,  
-        }
-    }
-
-    return await axios.post(`${root}/patient/new`, body, config)
-
 };
