@@ -50,13 +50,13 @@ export const Profile = () => {
         <Container>
             <Row>
             <ProfileNavigator/>            
-                {patients.map(data => 
-                        {
-                            return <CardPatient key={data.DNI} dataPatient={data}></CardPatient>
-                        }
-                        )
-                    }
             </Row>
+            {patients.map(data => 
+                    {
+                        return <CardPatient key={data.DNI} dataPatient={data}></CardPatient>
+                    }
+                    )
+                }
             <Row>
                 <Col xs={1}></Col>
                 <Col xs={10}>
