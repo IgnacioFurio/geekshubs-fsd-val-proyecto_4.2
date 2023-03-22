@@ -57,3 +57,9 @@ export const getPatientAppointment = async (token) => {
 
     return await axios.get(`${root}/patient/appointment/`, config)
 };
+
+export const deleteAppointment = async (body) => {
+
+    return await axios.post(`${root}/appointment/cancel`, body)
+
+};

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState,useEffect} from 'react'
 //render
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -8,13 +8,25 @@ import { ButtonSubmit } from '../ButtonSubmit/ButtonSubmit';
 
 export const AppointmentsInfo = ( dataPatient ) => {
 
-    // console.log(dataPatient);
+    // HOOKS
+    // keep the id for the appointment
+    const [ cancelAppointment, setCancelAppointment ] = useState();
+
+    // USEEFFECT
+    useEffect(() => {
+        console.log(cancelAppointment);
+    }, [cancelAppointment]);
+
+    // FUNCTIONS
     const modifyAppointment = () => {
         console.log('Modify appointment');
     };
 
     const deleteAppointment = () => {
+
         console.log('Delete appointment');
+
+        setCancelAppointment(dataPatient.dataPatient.id)
     };
 
     return (
