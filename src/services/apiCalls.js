@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const root = 'http://localhost:3000';
+const root = 'https://geekshubs-fsd-val-proyecto41-production.up.railway.app';
 
 export const createUserProfile = async (body) => {
 

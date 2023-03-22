@@ -46,17 +46,16 @@ export const Profile = () => {
     };
 
     return (
-        <>
-        <Container>
+        <Container fluid>
             <Row>
             <ProfileNavigator/>            
             </Row>
             {patients.map(data => 
-                    {
-                        return <CardPatient key={data.DNI} dataPatient={data}></CardPatient>
+                        {
+                            return <CardPatient key={data.DNI} dataPatient={data}></CardPatient>
+                        }
+                        )
                     }
-                    )
-                }
             <Row>
                 <Col xs={1}></Col>
                 <Col xs={10}>
@@ -65,6 +64,5 @@ export const Profile = () => {
                 <Col xs={1}></Col>
             </Row>
         </Container>
-        </>
     )
 };

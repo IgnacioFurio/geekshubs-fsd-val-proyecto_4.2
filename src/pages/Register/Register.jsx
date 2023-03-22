@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import { Form } from 'react-router-dom';
 //helper
 import { validate } from '../../helpers/useful';
 //apicall
@@ -10,6 +11,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import './Register.css';
+import { FormGroup } from 'react-bootstrap';
 
 export const Register = () => {
 
@@ -194,21 +196,22 @@ export const Register = () => {
       <Row>
         <Col xs={1}></Col>
         <Col xs={10}>
-        <InputType 
-            className={'inputBasicDesign'}
-            type={'text'}
-            name={'username'}
-            placeholder={'Eddieden06'}
-            required={true}
-            error={errorInputField.usernameError}
-            changeFunction={(e)=>inputHandler(e)}
-            blurFunction={(e)=>checkError(e)}
-        />
+          <InputType 
+              className={'inputBasicDesign'}
+              type={'text'}
+              name={'username'}
+              placeholder={'Eddieden06'}
+              required={true}
+              error={errorInputField.usernameError}
+              changeFunction={(e)=>inputHandler(e)}
+              blurFunction={(e)=>checkError(e)}
+              />
         </Col>
         <Col xs={1}></Col>
       </Row>
       <Row>
         <Col xs={1}></Col>
+          
         <Col xs={10}>
         <InputType 
             className={'inputBasicDesign'}
@@ -219,7 +222,7 @@ export const Register = () => {
             error={errorInputField.emailError}
             changeFunction={(e)=>inputHandler(e)}
             blurFunction={(e)=>checkError(e)}
-        />
+            />
         </Col>
         <Col xs={1}></Col>
       </Row>
@@ -235,7 +238,7 @@ export const Register = () => {
             error={errorInputField.passwordError}
             changeFunction={(e)=>inputHandler(e)}
             blurFunction={(e)=>checkError(e)}
-        />
+            />
         </Col>
         <Col xs={1}></Col>
       </Row>
@@ -251,7 +254,7 @@ export const Register = () => {
               error={errorInputField.password2Error}
               changeFunction={(e)=>inputHandler(e)}
               blurFunction={(e)=>confirmPass(e)}
-          />
+              />
         </Col>
         <Col xs={1}></Col>
       </Row>
@@ -260,13 +263,13 @@ export const Register = () => {
           <Col xs={4}>
               <ButtonSubmit 
                   className={
-                      submitActive ? 'submitDesignPassive submitDesignActive' : 'submitDesignPassive'
+                    submitActive ? 'submitDesignPassive submitDesignActive' : 'submitDesignPassive'
                   } 
                   buttonName={'Sign Up'}
                   clickFunction={
                     submitActive ? () => signUpUser() : () => {}
                   }
-              />
+                  />
           </Col>
           <Col xs={4}></Col>
       </Row>

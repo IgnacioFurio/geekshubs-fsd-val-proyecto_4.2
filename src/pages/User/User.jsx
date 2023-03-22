@@ -23,7 +23,7 @@ export const User = () => {
         if(userCredentials.length === 0){
             
             getUserProfile(dataRdx.userCredentials.token)
-            .then(
+                .then(
                 result => {
                     setUserCredentials(result)
                 }
@@ -34,20 +34,33 @@ export const User = () => {
     },[userCredentials]);
 
 
-    useEffect(() => {
-        console.log(userCredentials.data.data.user_name);
-    })
-
-    return (
-        <Container fluid>
-            <Row>
-                <ProfileNavigator />
-            </Row>
-            <Row>
-                <Col xs={1}></Col>
-                <Col xs={10}>{userCredentials.data.data.user_name}</Col>
-                <Col xs={1}></Col>
-            </Row>
-        </Container>
+    return (     
+            <Container fluid>
+                {   
+                    userCredentials.length === 0 ? (
+                        <></>
+                    ) : (
+                        <>
+                            <Row>
+                                <ProfileNavigator />
+                            </Row>
+                            <Row  className='userProfileDesign'>
+                                <Col xs={1}></Col>
+                                <Col xs={10} className='py-1'>{userCredentials.data.data.user_name}</Col>
+                                <Col xs={1}></Col>
+                                <Col xs={1}></Col>
+                                <Col xs={10} className='py-1'>{userCredentials.data.data.email}</Col>
+                                <Col xs={1}></Col>
+                                <Col xs={1}></Col>
+                                <Col xs={10} className='py-1'>{userCredentials.data.data.createdAt}</Col>
+                                <Col xs={1}></Col>
+                                <Col xs={1}></Col>
+                                <Col xs={10} className='py-1'>{userCredentials.data.data.updatedAt}</Col>
+                                <Col xs={1}></Col>
+                            </Row>
+                        </>
+                    )
+                }
+            </Container>
     );
 };
