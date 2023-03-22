@@ -64,10 +64,18 @@ console.log(cancelAppointment);
     const confirmCancelAppointment = () => {
 
         deleteAppointment(cancelAppointment.appointmentId, userRdx.userCredentials.token)
-        .then(() => {
+        .then((backendCall) => {
 
-            navigate('/profile')
-            setTimeout(() => {navigate('/profile/appointments')}, 2000)
+            setCancelMessage(backendCall.data.message);
+            
+            setTimeout(() => {
+
+                setCancelMessage("");
+
+                window.location.reload(false);
+                
+                setCancelAppointment({appointmentId: ""});
+        }, 2000)
         })
         .catch(error => console.log(error));
     };
@@ -75,7 +83,19 @@ console.log(cancelAppointment);
 
     return (
         <Container fluid className='allInfoDesign'>
-            <Row className='appointmentInfoDesign'>
+            {
+                cancelMessage !== "" ? (
+                <>
+                    <Row>
+                        <Col xs={1}></Col>
+                        <Col xs={10}><h1>{cancelMessage}</h1></Col>
+                        <Col xs={1}></Col>
+                        
+                    </Row>
+                </>
+                ) : (
+                <>
+                <Row className='appointmentInfoDesign'>
                 <Col xs= {1}></Col>
                 <Col xs= {4}>Id:</Col>
                 <Col xs= {6} className={'smText'}>{dataPatient.dataPatient.id}</Col>
@@ -121,6 +141,9 @@ console.log(cancelAppointment);
                 }
                 
             </Row>
+                </>
+                )
+            }
         </Container>
     )
 };
