@@ -4,10 +4,19 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import './AppointmentsInfo.css'
+import { ButtonSubmit } from '../ButtonSubmit/ButtonSubmit';
 
 export const AppointmentsInfo = ( dataPatient ) => {
 
     // console.log(dataPatient);
+    const modifyAppointment = () => {
+        console.log('Modify appointment');
+    };
+
+    const deleteAppointment = () => {
+        console.log('Delete appointment');
+    };
+
     return (
         <Container fluid className='allInfoDesign'>
             <Row className='appointmentInfoDesign'>
@@ -30,6 +39,11 @@ export const AppointmentsInfo = ( dataPatient ) => {
                 <Col xs= {1}></Col>
                 <Col xs= {4}>Updated:</Col>
                 <Col xs= {6} className={'smText'}>{dataPatient.dataPatient.updatedAt}</Col>
+                <Col xs= {1}></Col>
+                <Col xs= {1}></Col>
+                <Col xs= {4}><ButtonSubmit className={'submitDesignPassive submitModifyDesing'} buttonName={'Modify'} clickFunction={() => modifyAppointment()} /></Col>
+                <Col xs= {1}></Col>
+                <Col xs= {4}><ButtonSubmit className={'submitDesignPassive submitDeleteDesing'} buttonName={'Delete'} clickFunction={() => deleteAppointment()} /></Col>
                 <Col xs= {1}></Col>
             </Row>
         </Container>

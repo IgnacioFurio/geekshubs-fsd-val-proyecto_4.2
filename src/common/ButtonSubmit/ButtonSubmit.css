@@ -23,3 +23,10 @@
     color: beige;
     margin: 1em;
 }
+
+.submitModifyDesing{
+    background-color: cadetblue;
+}
+.submitDeleteDesing{
+    background-color: tomato;
+}
