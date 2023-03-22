@@ -31,7 +31,7 @@ export const createPatient = async (body, token) => {
             'Authorization': 'Bearer '+ token,  
         }
     }
-
+    console.log(config);
     return await axios.post(`${root}/patient/new`, body, config)
 
 };
@@ -58,8 +58,13 @@ export const getPatientAppointment = async (token) => {
     return await axios.get(`${root}/patient/appointment/`, config)
 };
 
-export const deleteAppointment = async (body) => {
-
-    return await axios.post(`${root}/appointment/cancel`, body)
-
+export const deleteAppointment = async (body, token) => {
+    console.log(body);
+    let config = {
+        headers: {
+            'Authorization': 'Bearer '+ token,  
+        }
+    }
+    console.log(config);
+    return await axios.delete(`${root}/appointment/cancel`, body, config)
 };

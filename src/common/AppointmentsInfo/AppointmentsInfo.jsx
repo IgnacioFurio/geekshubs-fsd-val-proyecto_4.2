@@ -1,32 +1,57 @@
 import React, { useState,useEffect} from 'react'
+//redux
+import { useDispatch, useSelector } from 'react-redux';
+import { userData } from '../../pages/Slices/userSlice';
+// apicall
+import { deleteAppointment } from '../../services/apiCalls';
 //render
+import { ButtonSubmit } from '../ButtonSubmit/ButtonSubmit';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import './AppointmentsInfo.css'
-import { ButtonSubmit } from '../ButtonSubmit/ButtonSubmit';
+import { useNavigate } from 'react-router-dom';
 
 export const AppointmentsInfo = ( dataPatient ) => {
 
+    const userRdx = useSelector(userData)
+
+    const navigate = useNavigate()
+
     // HOOKS
     // keep the id for the appointment
-    const [ cancelAppointment, setCancelAppointment ] = useState();
+    const [ cancelAppointment, setCancelAppointment ] = useState(
+        {
+            appointmentId: ""
+        }
+    );
 
     // USEEFFECT
     useEffect(() => {
-        console.log(cancelAppointment);
-    }, [cancelAppointment]);
+        // console.log(cancelAppointment);
+    });
 
     // FUNCTIONS
     const modifyAppointment = () => {
         console.log('Modify appointment');
     };
 
-    const deleteAppointment = () => {
+    const cancelSelectedAppointment = () => {
 
         console.log('Delete appointment');
+        setCancelAppointment(
+            {
+                appointmentId: `${dataPatient.dataPatient.id}`
+            }
+        );
 
-        setCancelAppointment(dataPatient.dataPatient.id)
+        deleteAppointment(cancelAppointment, userRdx.userCredentials.token)
+            .then(() => {
+
+                navigate('profile/')
+                
+            })
+            .catch(error => console.log(error));
     };
 
     return (
@@ -55,7 +80,7 @@ export const AppointmentsInfo = ( dataPatient ) => {
                 <Col xs= {1}></Col>
                 <Col xs= {4}><ButtonSubmit className={'submitDesignPassive submitModifyDesing'} buttonName={'Modify'} clickFunction={() => modifyAppointment()} /></Col>
                 <Col xs= {1}></Col>
-                <Col xs= {4}><ButtonSubmit className={'submitDesignPassive submitDeleteDesing'} buttonName={'Delete'} clickFunction={() => deleteAppointment()} /></Col>
+                <Col xs= {4}><ButtonSubmit className={'submitDesignPassive submitDeleteDesing'} buttonName={'Delete'} clickFunction={() => cancelSelectedAppointment()} /></Col>
                 <Col xs= {1}></Col>
             </Row>
         </Container>
