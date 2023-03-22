@@ -27,6 +27,9 @@
 .submitModifyDesing{
     background-color: cadetblue;
 }
+.submitKeepDesing{
+    background-color:mediumspringgreen;
+}
 .submitDeleteDesing{
     background-color: tomato;
 }
