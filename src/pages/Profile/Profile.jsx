@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 //redux
 import { useDispatch, useSelector } from 'react-redux';
-import { showPatient, patientData } from '../Slices/patientSlice';
 import { userData } from '../Slices/userSlice';
 //apicall
 import { getPatientInfo } from '../../services/apiCalls';

@@ -78,6 +78,7 @@ export const Login = () => {
 
     // for every change
     useEffect(() => {
+        console.log(dataRdx);
         //functions to make submit button activated
         //in case that a field is empty
         for(let empty in inputField){
@@ -155,7 +156,7 @@ export const Login = () => {
                 let backendData = {
                     token: backendCall.data.data,
                     message: backendCall.data.message,
-                    succes: backendCall.data.succes,
+                    succes: backendCall.data.success,
                     user: decodedToken
                 };
 

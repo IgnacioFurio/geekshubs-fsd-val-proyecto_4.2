@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 //redux
 import { useDispatch, useSelector } from 'react-redux';
 import { userData } from '../Slices/userSlice';
+import { appointmentData, appointmentSlice, modify } from '../Slices/appointmentSlice';
 //render
 import { ProfileNavigator } from '../../common/ProfileNavigator/ProfileNavigator';
 import Container from 'react-bootstrap/Container';
@@ -18,6 +19,8 @@ export const Appointments = () => {
 
     const patientDataRdx = useSelector(userData);
 
+    const appointmentRdx = useSelector(appointmentData)
+
     const dispatch = useDispatch();
 
     const navigate = useNavigate();
@@ -27,14 +30,13 @@ export const Appointments = () => {
 
         if(appointments.length === 0){
 
+            dispatch(modify({choosenAppointment: {}}));
 
             getPatientAppointment(patientDataRdx.userCredentials.token)
             .then(
                 result => {
                     setAppointments(result.data.data)
-                }
-
-                
+                    }
                 )
                 .catch(error => console.log(error))
         };
@@ -42,8 +44,13 @@ export const Appointments = () => {
     }, [appointments]);
 
 useEffect(() => {
-    // console.log(appointments);
+    if(appointmentRdx?.choosenAppointment?.succes){
+        console.log(appointmentRdx.choosenAppointment.succes);
+        setAppointments([]);
+
+    };
 });
+
     return (
         <>
             <ProfileNavigator/>

@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from 'react'
 //render
+import { AppointmentsInfo } from '../AppointmentsInfo/AppointmentsInfo';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { ListGroup } from 'react-bootstrap';
-import { AppointmentsInfo } from '../AppointmentsInfo/AppointmentsInfo';
 import './CardAppointment.css';
 
 export const CardAppointment = ({dataAppointment}) => {
 
     const patientAppointments = dataAppointment.Appointments;
+
+    // useEffect(() => {
+
+    // }, {patientAppointments});
 
     return (
         <Container fluid className='cardAppointmentDesign'>
@@ -36,8 +39,8 @@ export const CardAppointment = ({dataAppointment}) => {
                     {
                         return <AppointmentsInfo key={data.id} dataPatient={data}/>
                     }
-                    )
-                }
+                )
+            }
         </Container>
     );
 };
