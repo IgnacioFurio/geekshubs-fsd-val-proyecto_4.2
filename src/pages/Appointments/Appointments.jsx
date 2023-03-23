@@ -42,7 +42,6 @@ export const Appointments = () => {
 
         if(appointmentRdx?.choosenAppointment?.success){
             setAppointments([]);
-
         };
     }); 
 
