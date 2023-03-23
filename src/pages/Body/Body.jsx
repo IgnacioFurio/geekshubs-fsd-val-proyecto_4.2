@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { Appointments } from '../Appointments/Appointments';
 import { CreatePatient } from '../CreatePatient/CreatePatient';
+import { DoctorAppointments } from '../DoctorAppointments/DoctorAppointments';
 import { Home } from '../Home/Home';
 import { Login } from '../Login/Login';
 import { Profile } from '../Profile/Profile';
@@ -19,6 +20,7 @@ export const Body = () => {
                 <Route path='/profile/appointments' element={ <Appointments />} />
                 <Route path='/profile/patient/newpatient' element={ <CreatePatient />} />
                 <Route path='/profile/user' element={ <User />} />
+                <Route path='/doctor' element={ <DoctorAppointments />} />
             </Routes>
         </>
     );

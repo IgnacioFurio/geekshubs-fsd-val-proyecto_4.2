@@ -1,15 +1,12 @@
 import React, { useState, useEffect } from 'react';
+//apicall
+import { getPatientAppointment } from '../../services/apiCalls';
 //redux
 import { useDispatch, useSelector } from 'react-redux';
 import { userData } from '../Slices/userSlice';
 import { appointmentData, appointmentSlice, modify } from '../Slices/appointmentSlice';
 //render
 import { ProfileNavigator } from '../../common/ProfileNavigator/ProfileNavigator';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import { useNavigate } from 'react-router-dom';
-import { getPatientAppointment } from '../../services/apiCalls';
 import { CardAppointment } from '../../common/CardAppointment/CardAppointment';
 
 export const Appointments = () => {
@@ -22,8 +19,6 @@ export const Appointments = () => {
     const appointmentRdx = useSelector(appointmentData)
 
     const dispatch = useDispatch();
-
-    const navigate = useNavigate();
 
     //USEEFFECT
     useEffect(() => {
@@ -44,7 +39,7 @@ export const Appointments = () => {
     }, [appointments]);
     
     useEffect(() => {
-    console.log(appointmentRdx);
+
         if(appointmentRdx?.choosenAppointment?.success){
             setAppointments([]);
 
