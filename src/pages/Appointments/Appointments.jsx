@@ -42,14 +42,14 @@ export const Appointments = () => {
         };
 
     }, [appointments]);
+    
+    useEffect(() => {
+    console.log(appointmentRdx);
+        if(appointmentRdx?.choosenAppointment?.success){
+            setAppointments([]);
 
-useEffect(() => {
-    if(appointmentRdx?.choosenAppointment?.succes){
-        console.log(appointmentRdx.choosenAppointment.succes);
-        setAppointments([]);
-
-    };
-});
+        };
+    }); 
 
     return (
         <>

@@ -93,11 +93,11 @@ export const AppointmentsInfo = ( dataPatient ) => {
 
             setBackendMessage(backendCall.data.message);
 
-            let backendData = {succes: backendCall.data.success}
+            let backendData = {success: backendCall.data.success}
             
-            dispatch(modify({choosenAppointment: backendData}))
-
             setTimeout(() => {
+            
+                dispatch(modify({choosenAppointment: backendData}))
                 
                 setBackendMessage("");
                 
@@ -138,14 +138,19 @@ export const AppointmentsInfo = ( dataPatient ) => {
 
             setBackendMessage(backendCall.data.message);
             
+            let backendData = {success: backendCall.data.success};
+            
+            
             setTimeout(() => {
 
-                setCancelMessage("");
-
-                navigate("/profile")
+                dispatch(modify({choosenAppointment: backendData}));
+                
+                setBackendMessage("");
 
                 setCancelAppointment({appointmentId: ""});
-        }, 2000)
+
+                setConfirmDelete(false)
+            }, 2000)
         })
         .catch(error => console.log(error));
     };
@@ -158,7 +163,7 @@ export const AppointmentsInfo = ( dataPatient ) => {
                 <>
                     <Row>
                         <Col xs={1}></Col>
-                        <Col xs={10}><h1>{backendMessage}</h1></Col>
+                        <Col xs={10} className={'text-center d-flex align-items-center backendMessageBox'}><h1>{backendMessage}</h1></Col>
                         <Col xs={1}></Col>
                         
                     </Row>
