@@ -24,6 +24,17 @@ export const getUserProfile = async (token) => {
 
 };
 
+export const getDoctorData = async (token) => {
+
+    let config = {
+        headers: {
+            'Authorization': 'Bearer '+ token,  
+        }
+    }
+
+    return await axios.get(`${root}/user/doctor-info`, config);
+};
+
 export const createPatient = async (body, token) => {
 
     let config = {
