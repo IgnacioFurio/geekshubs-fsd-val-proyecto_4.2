@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { getPatientAppointment } from '../../services/apiCalls';
 //redux
 import { useDispatch, useSelector } from 'react-redux';
-import { userData } from '../Slices/userSlice';
+import { login, userData } from '../Slices/userSlice';
 import { appointmentData, appointmentSlice, modify } from '../Slices/appointmentSlice';
 //render
 import { ProfileNavigator } from '../../common/ProfileNavigator/ProfileNavigator';
@@ -43,6 +43,7 @@ export const Appointments = () => {
         if(appointmentRdx?.choosenAppointment?.success){
             setAppointments([]);
         };
+        console.log(appointments);
     }); 
 
     return (

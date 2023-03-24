@@ -26,7 +26,7 @@ export const DoctorProfile = () => {
 
     const dispatch = useDispatch();
 
-    const navigate = useNavigate
+    const navigate = useNavigate();
     
     // USEEFFECT
     useEffect(() => {
@@ -53,7 +53,13 @@ export const DoctorProfile = () => {
         <>
             <ProfileNavigator />
             <Container fluid>
-                <Row className='py-1'>
+            {doctorData.length === 0 ? (
+                <>
+                    <div><h1>Bringing your information.</h1></div>
+                </>
+            ) : (
+                <>
+                    <Row className='py-1'>
                     <Col xs={1}></Col>
                     <Col xs={4}>Colegiate nº:</Col>
                     <Col xs={6} className={'smText'}>{doctorData[0]?.collegiate_member}</Col>
@@ -110,10 +116,13 @@ export const DoctorProfile = () => {
                 <Row className='py-1'>
                     <Col xs={2}></Col>
                     <Col xs={8}>
+                        <ButtonSubmit className={'submitDesignPassive submitDesignActive'} buttonName={'View Appointments'} clickFunction={() => navigate('/doctor/appointments')}/>
                         {/* <Navigator className={'headerNavigatorDesign'} route={'Home'} destination={'/'}/> */}
                     </Col>
                     <Col xs={2}></Col>
                 </Row>
+                </>
+            )}                
             </Container>
         </>
     );

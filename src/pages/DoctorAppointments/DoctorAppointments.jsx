@@ -7,11 +7,16 @@ import { appointmentData } from '../Slices/appointmentSlice';
 import { userData } from '../Slices/userSlice';
 // render
 import { AppointmentsDoctorInfo } from '../../common/AppointmentsDoctorInfo/AppointmentsDoctorInfo';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 export const DoctorAppointments = () => {
 
     //HOOKS
     const [doctorData, setDoctorData] = useState([]);
+
+    // const [ doctorAppointmentsData, setDoctorAppointmentsData] = useState([]);
 
     const doctorDataRdx = useSelector(userData);
 
@@ -26,6 +31,8 @@ export const DoctorAppointments = () => {
             .then(
                 result => {
                     setDoctorData(result.data.data)
+
+                    // setDoctorAppointmentsData(doctorData[0])
                     }
                 )
                 .catch(error => console.log(error))
@@ -33,13 +40,22 @@ export const DoctorAppointments = () => {
 
     }, [doctorData]);
 
-    useEffect(() => {
-        console.log(doctorData[0].Appointments);
-    });
-
     return (
         <>
-            {doctorData[0].Appointments.map(data => {<AppointmentsDoctorInfo key={data.id} data={data}/>})}
+            {doctorData.length === 0 ? (
+                <>
+                <div>bring your appointments</div>
+            </>
+            ) : (
+                <>
+                {(doctorData[0].Appointments).map(data => 
+                        {
+                            return <AppointmentsDoctorInfo key={data.id} dataDocAppoint={data}/>
+                        }
+                        )
+                    }
+            </>
+            )}
         </>
     );
 };
