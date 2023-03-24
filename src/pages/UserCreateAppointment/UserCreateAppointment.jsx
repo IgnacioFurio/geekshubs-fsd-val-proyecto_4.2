@@ -1,4 +1,7 @@
 import React, { useState, useEffect  } from 'react';
+//redux
+import { useDispatch, useSelector } from 'react-redux';
+import { userData } from '../Slices/userSlice';
 // render
 import { InputType } from '../../common/InputType/InputType';
 import { Select } from '../../common/Select/Select';
@@ -8,6 +11,10 @@ import Col from 'react-bootstrap/Col';
 
 export const UserCreateAppointment = () => {
     
+    const userRdx = useSelector(userData);
+
+    const dispatch = useDispatch()
+
     //HOOKS
 
     //set data for the new register
@@ -33,8 +40,6 @@ export const UserCreateAppointment = () => {
 
     // HANDLER 
     const inputHandler = (e) => {
-            
-        let check = true
 
         setNewAppointment((prevState)=>(
                 {
@@ -53,11 +58,7 @@ export const UserCreateAppointment = () => {
         );
     };
 
-    // USEEFFECT
-    useEffect(() => {
-        console.log(newAppointment);
-        console.log(validInputField);
-    });
+
 
     // FUNCTIONS 
     const checkError = () => {};
@@ -84,7 +85,7 @@ export const UserCreateAppointment = () => {
                 <Row>
                     <Col xs={1}></Col>
                     <Col xs={10}>
-                        {/* <Select dataMap={''}/> */}
+                        <Select />
                     </Col>
                     <Col xs={1}></Col>
                 </Row>
