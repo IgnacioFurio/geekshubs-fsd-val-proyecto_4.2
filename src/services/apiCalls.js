@@ -69,6 +69,17 @@ export const getPatientAppointment = async (token) => {
     return await axios.get(`${root}/patient/appointment/`, config)
 };
 
+export const createAppointment = async (body, token) => {
+
+    let config = {
+        headers: {
+            'Authorization': 'Bearer '+ token,  
+        }
+    }
+
+    return await axios.post(`${root}/appointment/new`, body, config)
+};
+
 export const updateAppointment = async (body, token) => {
 
     let config = {

@@ -8,6 +8,7 @@ import { appointmentData, appointmentSlice, modify } from '../Slices/appointment
 //render
 import { ProfileNavigator } from '../../common/ProfileNavigator/ProfileNavigator';
 import { CardAppointment } from '../../common/CardAppointment/CardAppointment';
+import { ButtonSubmit } from '../../common/ButtonSubmit/ButtonSubmit';
 
 export const Appointments = () => {
 
@@ -49,6 +50,7 @@ export const Appointments = () => {
     return (
         <>
             <ProfileNavigator/>
+            <ButtonSubmit />
                 {appointments.map(data =>
                         {
                             return <CardAppointment key={data.id} dataAppointment={data}/>
