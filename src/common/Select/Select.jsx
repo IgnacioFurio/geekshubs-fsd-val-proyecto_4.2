@@ -4,7 +4,8 @@ import { getDoctorData } from '../../services/apiCalls';
 //redux
 import { useDispatch, useSelector } from 'react-redux';
 import { userData } from '../../pages/Slices/userSlice';
-import { doctor } from '../../pages/Slices/appointmentSlice';
+import { modify } from '../../pages/Slices/appointmentSlice';
+import { doctor } from '../../pages/Slices/selectDoctorSlice';
 
 
 export const Select = () => {
@@ -52,7 +53,8 @@ export const Select = () => {
 
     useEffect(() => {
         
-        dispatch(doctor({choosenAppointment: doctorId}));
+        dispatch(doctor({choosenDoctor: doctorId}));
+        dispatch(modify({choosenAppointment: true}));
 
     }, [doctorId]);
 
