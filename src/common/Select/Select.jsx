@@ -4,11 +4,13 @@ import { getDoctorData } from '../../services/apiCalls';
 //redux
 import { useDispatch, useSelector } from 'react-redux';
 import { userData } from '../../pages/Slices/userSlice';
+import { doctor } from '../../pages/Slices/appointmentSlice';
 
 
 export const Select = () => {
 
     const userRdx = useSelector(userData);
+    const dispatch = useDispatch()
 
     //HOOKS
     //set all the doctors data
@@ -50,7 +52,8 @@ export const Select = () => {
 
     useEffect(() => {
         
-        
+        dispatch(doctor({choosenAppointment: doctorId}));
+
     }, [doctorId]);
 
     //FUNCTIONS
@@ -63,7 +66,8 @@ export const Select = () => {
                 <></>
             ) : (
                 <>
-                    <select name={'selectedDoctor'} onChange={(e) => doctorSelected(e)}>
+                    <div className='my-3'>Doctor:</div>
+                    <select name={'selectedDoctor'} className={'my-1 py-2'} onChange={(e) => doctorSelected(e)}>
                         <option value="default">----------</option>
                         {doctorsData.map(data => {return <option  key={data.id} name="selectedDoctor" value={data.id}>{data.name} {data.surname}</option>})}
                     </select>

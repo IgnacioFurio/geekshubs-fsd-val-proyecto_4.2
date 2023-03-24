@@ -2,6 +2,7 @@ import React, { useState, useEffect  } from 'react';
 //redux
 import { useDispatch, useSelector } from 'react-redux';
 import { userData } from '../Slices/userSlice';
+import { appointmentData } from '../Slices/appointmentSlice';
 // render
 import { InputType } from '../../common/InputType/InputType';
 import { Select } from '../../common/Select/Select';
@@ -12,6 +13,7 @@ import Col from 'react-bootstrap/Col';
 export const UserCreateAppointment = () => {
     
     const userRdx = useSelector(userData);
+    const doctorIdRdx = useSelector(appointmentData);
 
     const dispatch = useDispatch()
 
@@ -41,6 +43,13 @@ export const UserCreateAppointment = () => {
     // HANDLER 
     const inputHandler = (e) => {
 
+        setNewAppointment(
+            {
+                date_time: "",
+                patient_id: userRdx.userCredentials.user.userId,
+                doctor_id: ""
+            }
+        );
         setNewAppointment((prevState)=>(
                 {
                 ...prevState,
@@ -56,7 +65,15 @@ export const UserCreateAppointment = () => {
                 }
             )
         );
+
+        console.log(doctorIdRdx.choosenAppointment);
     };
+
+    // USEEFFECT
+
+    useEffect(() => {
+        console.log(newAppointment);
+    })
 
 
 
