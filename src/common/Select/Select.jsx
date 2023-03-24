@@ -14,7 +14,27 @@ export const Select = () => {
     //set all the doctors data
     const [doctorsData, setDoctorsData] = useState([]);
 
-        // USEEFFECT
+    //set selected doctor
+    const [doctorId, setDoctorId] = useState(
+        {
+            selectedDoctor: ""
+        }
+    );
+
+    // INPUTHANDLER
+    //set doctor id of doctor selected
+    const doctorSelected = (e) => {
+
+        setDoctorId((prevState)=>(
+                {
+                    ...prevState,
+                    [e.target.name]: e.target.value
+                }
+            )
+        );
+    };
+
+    // USEEFFECT
     useEffect(() => {
         
         if(doctorsData.length === 0){
@@ -22,20 +42,34 @@ export const Select = () => {
             .then(
                 result => {
                     setDoctorsData(result.data.data)
-                }
+                    }
                 )
                 .catch(error => console.log(error));
-            };
-            
-            console.log(doctorsData);
-            
+            };            
     }, [doctorsData]);
 
-    return (
+    useEffect(() => {
+        
+        
+    }, [doctorId]);
 
-        <select>
-            <option value="default">----------</option>
-            {doctorsData.map(data => {return <option value={data.id}>{data.name} {data.surname}</option>})}
-        </select>
-    );
+    //FUNCTIONS
+
+
+    return (
+        <>
+        {
+            doctorsData.length === 0 ? (
+                <></>
+            ) : (
+                <>
+                    <select name={'selectedDoctor'} onChange={(e) => doctorSelected(e)}>
+                        <option value="default">----------</option>
+                        {doctorsData.map(data => {return <option  key={data.id} name="selectedDoctor" value={data.id}>{data.name} {data.surname}</option>})}
+                    </select>
+                </>
+            )
+        }
+        </>
+    )
 };
