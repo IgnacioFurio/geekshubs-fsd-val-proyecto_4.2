@@ -75,9 +75,9 @@ export const Register = () => {
 
         setSubmitActive(false);
         
-            return;
-          };
+          return;
         };
+      };
 
     //in case that a field is not valid
     for(let valid in validInputField){
@@ -85,8 +85,8 @@ export const Register = () => {
       if(validInputField[valid] === false){
 
         setSubmitActive(false);
-            return;
-        };
+          return;
+      };
     };
     
     //in case that a field shows an error
@@ -94,9 +94,9 @@ export const Register = () => {
 
       if(errorInputField[error]){
           
-            setSubmitActive(false);
-            return;
-          };
+          setSubmitActive(false);
+          return;
+        };
     };
     
     //in case the data it's full validated

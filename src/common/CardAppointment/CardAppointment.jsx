@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom';
 //render
 import { AppointmentsInfo } from '../AppointmentsInfo/AppointmentsInfo';
+import { ButtonSubmit } from '../ButtonSubmit/ButtonSubmit';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -10,9 +12,11 @@ export const CardAppointment = ({dataAppointment}) => {
 
     const patientAppointments = dataAppointment.Appointments;
 
-    // useEffect(() => {
+    const navigate = useNavigate()
 
-    // }, {patientAppointments});
+    useEffect(() => {
+        console.log(dataAppointment.id);
+    });
 
     return (
         <Container fluid className='cardAppointmentDesign'>
@@ -33,7 +37,7 @@ export const CardAppointment = ({dataAppointment}) => {
                 <Col xs= {4}>Appointments:</Col>
                 <Col xs= {6}></Col>
                 <Col xs= {1}></Col>
-                </Row>
+            </Row>
             {
                 patientAppointments.map(data => 
                     {
