@@ -14,10 +14,6 @@ export const CardAppointment = ({dataAppointment}) => {
 
     const navigate = useNavigate()
 
-    useEffect(() => {
-        console.log(dataAppointment.id);
-    });
-
     return (
         <Container fluid className='cardAppointmentDesign'>
             <Row>

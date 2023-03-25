@@ -160,7 +160,31 @@ export const validate = (name, data, required) => {
 
     return {message: "", valid: true};
 
+    // SELECTION FIELDS
 
+    case "data_time":
+
+        if(data === ""){
+            return {message: "Please choose a date for the appointment", valid: false}
+        };
+    
+    return {message: "", valid: true};
+    
+    case "patient_id":
+
+    if(data === "" || data === "default"){
+        return {message: "Please choose a patient for the appointment", valid: false}
+    };
+
+    return {message: "", valid: true};
+
+    case "doctor_id":
+
+    if(data === "" || data === "default"){
+        return {message: "Please choose a doctor for the appointment", valid: false}
+    };
+
+    return {message: "", valid: true};
 
     default:
         console.log("Error not recognized");

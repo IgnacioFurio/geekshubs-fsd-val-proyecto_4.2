@@ -1,4 +1,5 @@
 import React, { useState, useEffect  } from 'react';
+import { useNavigate } from 'react-router-dom';
 //apicall
 import { createAppointment, getDoctorData, getPatientInfo } from '../../services/apiCalls';
 //redux
@@ -11,10 +12,13 @@ import { ButtonSubmit } from '../../common/ButtonSubmit/ButtonSubmit';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { validate } from '../../helpers/useful';
 
 export const UserCreateAppointment = () => {
     
     const userRdx = useSelector(userData);
+
+    const navigate = useNavigate()
 
     //HOOKS
     const [patientsData, setPatientsData] = useState([]);
@@ -52,7 +56,7 @@ export const UserCreateAppointment = () => {
 
     // HANDLER 
     const inputHandler = (e) => {
-        console.log(e);
+
         setNewAppointment((prevState)=>(
                 {
                 ...prevState,
@@ -76,7 +80,7 @@ export const UserCreateAppointment = () => {
         //in case that a field is empty
         for(let empty in newAppointment){
         
-            if(newAppointment[empty] === ""){
+            if(newAppointment[empty] === "" || newAppointment[empty] === "default"){
     
             setSubmitActive(false);
             
@@ -109,9 +113,8 @@ export const UserCreateAppointment = () => {
     });
 
     useEffect(() => {
-        console.log(newAppointment);
+        console.log(newAppointmentError);
         console.log(validInputField);
-        console.log(patientsData);
     });
 
     useEffect(() => {
@@ -143,6 +146,36 @@ export const UserCreateAppointment = () => {
     }, [doctorsData]);
 
     // FUNCTIONS 
+
+    const checkError = (e) => {
+        console.log(e.target.value);
+        let error = "";
+
+        let check = validate(
+        e.target.name,
+        e.target.value,
+        e.target.required
+        );
+        
+        error = check.message
+
+        setValidInputfield((prevState) => (
+                {
+                    ...prevState,
+                    [e.target.name + 'Valid']: check.valid
+                }
+            )
+        );
+
+        setNewAppointmentError((prevState) => (
+                {
+                ...prevState,
+                [e.target.name + 'Error']: error
+                }
+            )
+        );
+    };
+
     const createNewAppointment = () => {
 
         createAppointment(newAppointment,  userRdx.userCredentials.token)
@@ -152,9 +185,9 @@ export const UserCreateAppointment = () => {
                 message: backendCall.data.message
             };
 
-            setUserMessage(backendData.message);
+            // setUserMessage(backendData.message);
 
-            setTimeout(() => {navigate('/profile')}, 2000)
+            setTimeout(() => {navigate('/profile/appointments')}, 2000)
         })
         .catch(error => console.log(error));
 
@@ -187,8 +220,13 @@ export const UserCreateAppointment = () => {
                 <Row>
                     <Col xs={1}></Col>
                     <Col xs={10}>
-                        <Select dataMap={patientsData} nameSelect='patient_id' changeFunction={(e)=>inputHandler(e)}/>
+                        <Select dataMap={patientsData} nameSelect='patient_id' changeFunction={(e)=>inputHandler(e)} blurFunction={(e)=>checkError(e)}/>
                     </Col>
+                    <Col xs={1}></Col>
+                </Row>
+                <Row>
+                    <Col xs={1}></Col>
+                    <Col xs={10}>{newAppointmentError.patient_idError}</Col>
                     <Col xs={1}></Col>
                 </Row>
                 <Row>
@@ -199,7 +237,7 @@ export const UserCreateAppointment = () => {
                 <Row>
                     <Col xs={1}></Col>
                     <Col xs={10}>
-                        <Select dataMap={doctorsData} nameSelect='doctor_id' changeFunction={(e)=>inputHandler(e)}/>
+                        <Select dataMap={doctorsData} nameSelect='doctor_id' changeFunction={(e)=>inputHandler(e)} blurFunction={(e)=>checkError(e)}/>
                     </Col>
                     <Col xs={1}></Col>
                 </Row>
