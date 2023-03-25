@@ -30,6 +30,13 @@ export const UserCreateAppointment = () => {
         }
     );
 
+    //set Error for the new register
+    const [newAppointmentError, setNewAppointmentError] = useState(
+        {
+        date_timeError: ''
+        }
+    );
+
     //validate the value inside the inputs
     const [validInputField, setValidInputfield] = useState(
         {
@@ -67,15 +74,48 @@ export const UserCreateAppointment = () => {
                 }
             )
         );
+
+        checkErrorDate(e)
     };
 
     // USEEFFECT
+    useEffect(() => {
+        console.log(newAppointment);
+        console.log(validInputField);
+    });
 
     useEffect(() => {
-        console.log(doctorIdRdx);
-        console.log(refreshRdx);
+
+    // checking the patient id is automatically fill
+    if(newAppointment.patient_id !== ""){
+
+        setValidInputfield(
+            {
+                date_timeValid: validInputField.date_timeValid,
+                patient_idValid: true,
+                doctor_idValid: validInputField.doctor_idValid
+            }
+        );
+    }
+
+    // checking we get the data of the doctor_id
+    if(newAppointment.doctor_id !== "") {
+
+        setValidInputfield(
+            {
+                date_timeValid: validInputField.date_timeValid,
+                patient_idValid: validInputField.patient_idValid,
+                doctor_idValid: true
+            }
+        );
+    };
+    },[newAppointment]);
+
+
+    useEffect(() => {
+
         if(refreshRdx?.choosenAppointment){
-            console.log('hello');
+
             setNewAppointment(
                 {
                     date_time: newAppointment.date_time,
@@ -87,7 +127,9 @@ export const UserCreateAppointment = () => {
     }, [refreshRdx])
 
     // FUNCTIONS 
-    const checkError = () => {};
+    const checkErrorDate = (e) => {
+        
+    };
 
     return (
         <>
@@ -103,7 +145,7 @@ export const UserCreateAppointment = () => {
                             required={true}
                             error={""}
                             changeFunction={(e)=>inputHandler(e)}
-                            blurFunction={(e)=>checkError(e)}
+                            blurFunction={(e)=>checkErrorDate(e)}
                             />
                     </Col>
                     <Col xs={1}></Col>
@@ -111,7 +153,7 @@ export const UserCreateAppointment = () => {
                 <Row>
                     <Col xs={1}></Col>
                     <Col xs={10}>
-                        <Select />
+                        <Select blurFunction={(e)=>checkError(e)}/>
                     </Col>
                     <Col xs={1}></Col>
                 </Row>

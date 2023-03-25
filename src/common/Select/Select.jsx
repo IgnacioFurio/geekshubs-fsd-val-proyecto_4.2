@@ -8,7 +8,7 @@ import { modify } from '../../pages/Slices/appointmentSlice';
 import { doctor } from '../../pages/Slices/selectDoctorSlice';
 
 
-export const Select = () => {
+export const Select = (blurFunction) => {
 
     const userRdx = useSelector(userData);
     const dispatch = useDispatch()
@@ -23,6 +23,12 @@ export const Select = () => {
             selectedDoctor: ""
         }
     );
+    //set Error message
+    const [doctorIdError, setDoctorIdError] = useState(
+        {
+            selectedDoctorError: ""
+        }
+    );
 
     // INPUTHANDLER
     //set doctor id of doctor selected
@@ -35,6 +41,8 @@ export const Select = () => {
                 }
             )
         );
+
+        checkErrorSelect(e)
     };
 
     // USEEFFECT
@@ -59,7 +67,9 @@ export const Select = () => {
     }, [doctorId]);
 
     //FUNCTIONS
-
+    const checkErrorSelect = (e) => {
+        console.log('buscando errores');
+    };
 
     return (
         <>
@@ -70,7 +80,7 @@ export const Select = () => {
                 <>
                     <div className='my-3'>Doctor:</div>
                     <select name={'selectedDoctor'} className={'my-1 py-2'} onChange={(e) => doctorSelected(e)}>
-                        <option value="default">----------</option>
+                        <option name="selectedDoctor" value="default">----------</option>
                         {doctorsData.map(data => {return <option  key={data.id} name="selectedDoctor" value={data.id}>{data.name} {data.surname}</option>})}
                     </select>
                 </>
