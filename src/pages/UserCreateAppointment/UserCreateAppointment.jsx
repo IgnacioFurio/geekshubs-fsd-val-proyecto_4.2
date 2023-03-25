@@ -54,6 +54,9 @@ export const UserCreateAppointment = () => {
   //activate submit button
     const [submitActive, setSubmitActive] = useState(false);
 
+    //set backend message
+    const [backendMessage, setBackendMessage] = useState("");
+
     // HANDLER 
     const inputHandler = (e) => {
 
@@ -115,6 +118,7 @@ export const UserCreateAppointment = () => {
     useEffect(() => {
         console.log(newAppointmentError);
         console.log(validInputField);
+        console.log(backendMessage);
     });
 
     useEffect(() => {
@@ -181,9 +185,7 @@ export const UserCreateAppointment = () => {
         createAppointment(newAppointment,  userRdx.userCredentials.token)
         .then((backendCall) => {
 
-            let backendData = {
-                message: backendCall.data.message
-            };
+            setBackendMessage(backendCall.data.message);
 
             // setUserMessage(backendData.message);
 
@@ -195,72 +197,87 @@ export const UserCreateAppointment = () => {
 
     return (
         <>
-            <Container>
-                <Row>
-                    <Col xs={1}></Col>
-                    <Col xs={10}>
-                        <InputType 
-                            className={'inputBasicDesign'}
-                            type={'datetime-local'}
-                            name={'date_time'}
-                            placeholder={'___'}
-                            required={true}
-                            error={""}
-                            changeFunction={(e)=>inputHandler(e)}
-                            blurFunction={() => {}}
-                            />
-                    </Col>
-                    <Col xs={1}></Col>
-                </Row>
-                <Row>
-                    <Col xs={1}></Col>
-                    <Col xs={10} className='my-3'>Patient:</Col>
-                    <Col xs={1}></Col>
-                </Row>
-                <Row>
-                    <Col xs={1}></Col>
-                    <Col xs={10}>
-                        <Select dataMap={patientsData} nameSelect='patient_id' changeFunction={(e)=>inputHandler(e)} blurFunction={(e)=>checkError(e)}/>
-                    </Col>
-                    <Col xs={1}></Col>
-                </Row>
-                <Row>
-                    <Col xs={1}></Col>
-                    <Col xs={10}>{newAppointmentError.patient_idError}</Col>
-                    <Col xs={1}></Col>
-                </Row>
-                <Row>
-                    <Col xs={1}></Col>
-                    <Col xs={10} className='my-3'>Doctor:</Col>
-                    <Col xs={1}></Col>
-                </Row>
-                <Row>
-                    <Col xs={1}></Col>
-                    <Col xs={10}>
-                        <Select dataMap={doctorsData} nameSelect='doctor_id' changeFunction={(e)=>inputHandler(e)} blurFunction={(e)=>checkError(e)}/>
-                    </Col>
-                    <Col xs={1}></Col>
-                </Row>
-                <Row>
-                    <Col xs={1}></Col>
-                    <Col xs={10}>{newAppointmentError.doctor_idError}</Col>
-                    <Col xs={1}></Col>
-                </Row>
-                <Row>
-                    <Col xs={3}></Col>
-                    <Col xs={6}>
-                        <ButtonSubmit 
-                            className={
-                                submitActive ? 'submitDesignPassive submitDesignActive' : 'submitDesignPassive'
-                            } 
-                            buttonName={'New Appointment'}
-                            clickFunction={
-                                submitActive ? (() => createNewAppointment()) : (() => {})
-                            }
-                            />
-                    </Col>
-                    <Col xs={3}></Col>
-                </Row>
+            <Container fluid>
+                {
+                backendMessage ? (
+                    <>
+                        <Row>
+                            <Col xs={1}></Col>
+                            <Col xs={10} className={'text-center d-flex align-items-center backendMessageBox'}><h1>{backendMessage}</h1></Col>
+                            <Col xs={1}></Col>
+                            
+                        </Row>
+                    </>
+                ) : (
+                    <>
+                        <Row>
+                            <Col xs={1}></Col>
+                            <Col xs={10}>
+                                <InputType 
+                                    className={'inputBasicDesign'}
+                                    type={'datetime-local'}
+                                    name={'date_time'}
+                                    placeholder={'___'}
+                                    required={true}
+                                    error={""}
+                                    changeFunction={(e)=>inputHandler(e)}
+                                    blurFunction={() => {}}
+                                    />
+                            </Col>
+                            <Col xs={1}></Col>
+                        </Row>
+                        <Row>
+                            <Col xs={1}></Col>
+                            <Col xs={10} className='my-3'>Patient:</Col>
+                            <Col xs={1}></Col>
+                        </Row>
+                        <Row>
+                            <Col xs={1}></Col>
+                            <Col xs={10}>
+                                <Select dataMap={patientsData} nameSelect='patient_id' changeFunction={(e)=>inputHandler(e)} blurFunction={(e)=>checkError(e)}/>
+                            </Col>
+                            <Col xs={1}></Col>
+                        </Row>
+                        <Row>
+                            <Col xs={1}></Col>
+                            <Col xs={10}>{newAppointmentError.patient_idError}</Col>
+                            <Col xs={1}></Col>
+                        </Row>
+                        <Row>
+                            <Col xs={1}></Col>
+                            <Col xs={10} className='my-3'>Doctor:</Col>
+                            <Col xs={1}></Col>
+                        </Row>
+                        <Row>
+                            <Col xs={1}></Col>
+                            <Col xs={10}>
+                                <Select dataMap={doctorsData} nameSelect='doctor_id' changeFunction={(e)=>inputHandler(e)} blurFunction={(e)=>checkError(e)}/>
+                            </Col>
+                            <Col xs={1}></Col>
+                        </Row>
+                        <Row>
+                            <Col xs={1}></Col>
+                            <Col xs={10}>{newAppointmentError.doctor_idError}</Col>
+                            <Col xs={1}></Col>
+                        </Row>
+                        <Row>
+                            <Col xs={3}></Col>
+                            <Col xs={6}>
+                                <ButtonSubmit 
+                                    className={
+                                        submitActive ? 'submitDesignPassive submitDesignActive' : 'submitDesignPassive'
+                                    } 
+                                    buttonName={'New Appointment'}
+                                    clickFunction={
+                                        submitActive ? (() => createNewAppointment()) : (() => {})
+                                    }
+                                    />
+                            </Col>
+                            <Col xs={3}></Col>
+                        </Row>
+                    </>
+                )
+                }                
             </Container>
         </>
     );
