@@ -11,12 +11,18 @@ export const isAdminSlice = createSlice({
             ...state,
             ...action.payload
             }
+        },
+        roleOut: (state, action) => {
+            return {
+            ...state,
+            ...action.payload
+            }
         }
     }        
 });
 
 //export actions
-export const { roleIn } = isAdminSlice.actions;
+export const { roleIn, roleOut } = isAdminSlice.actions;
 
 export const adminData = (state) => state.admin;
 

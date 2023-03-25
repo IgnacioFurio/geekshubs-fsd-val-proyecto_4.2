@@ -10,6 +10,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import './Header.css'
+import { roleOut } from '../../pages/Slices/isAdminSlice';
 
 export const Header = () => {
 
@@ -33,7 +34,7 @@ export const Header = () => {
         let backendData = {}
 
         dispatch(userout({userCredentials: backendData}));
-        dispatch
+        dispatch(roleOut({isAdmin: false}));
 
         setTimeout(() => {navigate('/')}, 1000)
     };

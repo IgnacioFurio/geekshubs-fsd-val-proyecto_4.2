@@ -18,7 +18,8 @@ export const Admin = () => {
 
     // USESTATE
     useEffect(() => {
-        if(!isAdmin.isAdmin){
+
+        if(isAdmin.isAdmin !== true ){
             navigate('/')
         };
     });
