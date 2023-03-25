@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { Form } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 //helper
 import { validate } from '../../helpers/useful';
 //apicall
@@ -14,6 +14,8 @@ import './Register.css';
 import { FormGroup } from 'react-bootstrap';
 
 export const Register = () => {
+
+  const navigate = useNavigate()
 
   //HOOKS
 
@@ -177,8 +179,13 @@ export const Register = () => {
 
   //sing up function
   const signUpUser = () => {
+    
     createUserProfile(newRegister)
-      .then(() => {})
+      .then(() => {
+
+        navigate('/')
+
+      })
       .catch(error => {
 
         let backendErrorData = {

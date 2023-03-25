@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
+import { Admin } from '../Admin/Admin';
 import { Appointments } from '../Appointments/Appointments';
 import { CreatePatient } from '../CreatePatient/CreatePatient';
 import { DoctorAppointments } from '../DoctorAppointments/DoctorAppointments';
@@ -25,6 +26,7 @@ export const Body = () => {
                 <Route path='/doctor' element={ <DoctorProfile />} />
                 <Route path='/doctor/appointments' element={ <DoctorAppointments />} />
                 <Route path='/profile/appointments/new' element={ <UserCreateAppointment/> } />
+                <Route path='/admin' element={ <Admin/> } />
             </Routes>
         </>
     );

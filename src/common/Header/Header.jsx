@@ -33,6 +33,7 @@ export const Header = () => {
         let backendData = {}
 
         dispatch(userout({userCredentials: backendData}));
+        dispatch
 
         setTimeout(() => {navigate('/')}, 1000)
     };

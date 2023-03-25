@@ -12,6 +12,8 @@ export const userLogin = async (body) => {
     return await axios.post(`${root}/auth/login`, body)
 };
 
+
+
 export const getUserProfile = async (token) => {
 
     let config = {

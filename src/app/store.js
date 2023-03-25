@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import userSlice from "../pages/Slices/userSlice";
 import appointmentSlice from "../pages/Slices/appointmentSlice";
-import selectDoctorSlice from "../pages/Slices/selectDoctorSlice";
+import isAdminSlice from "../pages/Slices/isAdminSlice";
 
 import storage from 'redux-persist/lib/storage';
 import { combineReducers } from 'redux';
@@ -12,7 +12,7 @@ import thunk from 'redux-thunk';
 const reducers = combineReducers({
     user: userSlice,
     appointment: appointmentSlice,
-    doctorId: selectDoctorSlice
+    admin: isAdminSlice
 })
 
 const persistConfig = {

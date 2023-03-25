@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 //redux
 import { useDispatch, useSelector } from 'react-redux';
 import { login, userData } from '../Slices/userSlice';
+import { roleIn } from '../Slices/isAdminSlice';
 //apicall
 import { userLogin } from '../../services/apiCalls';
 //jwt
@@ -78,7 +79,6 @@ export const Login = () => {
 
     // for every change
     useEffect(() => {
-        console.log(dataRdx);
         //functions to make submit button activated
         //in case that a field is empty
         for(let empty in inputField){
@@ -163,6 +163,12 @@ export const Login = () => {
                 dispatch(login({userCredentials: backendData}));
 
                 setWelcome(backendData.message)
+
+                if(backendData.user.roleId === 1 || backendData.user.roleId === 2){
+                    dispatch(roleIn({isAdmin: true}));
+                } else if (backendData.user.roleId === 3) {
+                    dispatch(roleIn({isAdmin: false}));
+                };
 
                 setTimeout(() => {navigate('/')}, 3000)
             })
