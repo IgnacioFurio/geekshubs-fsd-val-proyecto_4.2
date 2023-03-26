@@ -44,15 +44,27 @@ export const User = () => {
                             <Row>
                                 <ProfileNavigator />
                             </Row>
-                            <Row  className='userProfileDesign'>
+                            <Row  className='userProfileDesign my-3'>
+                                <Col xs={1}></Col>
+                                <Col xs={10} className='py-1 fs-5'>Username:</Col>
+                                <Col xs={1}></Col>
                                 <Col xs={1}></Col>
                                 <Col xs={10} className='py-1'>{userCredentials.data.data.user_name}</Col>
+                                <Col xs={1}></Col>
+                                <Col xs={1}></Col>
+                                <Col xs={10} className='py-1 fs-5'>Email:</Col>
                                 <Col xs={1}></Col>
                                 <Col xs={1}></Col>
                                 <Col xs={10} className='py-1'>{userCredentials.data.data.email}</Col>
                                 <Col xs={1}></Col>
                                 <Col xs={1}></Col>
+                                <Col xs={10} className='py-1 fs-5'>Created at:</Col>
+                                <Col xs={1}></Col>
+                                <Col xs={1}></Col>
                                 <Col xs={10} className='py-1'>{userCredentials.data.data.createdAt}</Col>
+                                <Col xs={1}></Col>
+                                <Col xs={1}></Col>
+                                <Col xs={10} className='py-1 fs-5'>Updated at:</Col>
                                 <Col xs={1}></Col>
                                 <Col xs={1}></Col>
                                 <Col xs={10} className='py-1'>{userCredentials.data.data.updatedAt}</Col>

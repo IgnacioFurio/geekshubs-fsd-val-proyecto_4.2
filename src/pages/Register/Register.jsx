@@ -270,7 +270,7 @@ export const Register = () => {
           <Col xs={4}>
               <ButtonSubmit 
                   className={
-                    submitActive ? 'submitDesignPassive submitDesignActive' : 'submitDesignPassive'
+                    submitActive ? 'submitDesignPassive submitDesignActive textFormat' : 'submitDesignPassive'
                   } 
                   buttonName={'Sign Up'}
                   clickFunction={

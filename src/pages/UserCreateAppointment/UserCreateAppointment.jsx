@@ -259,7 +259,7 @@ export const UserCreateAppointment = () => {
                             <Col xs={6}>
                                 <ButtonSubmit 
                                     className={
-                                        submitActive ? 'submitDesignPassive submitDesignActive' : 'submitDesignPassive'
+                                        submitActive ? 'submitDesignPassive submitDesignActive textFormat' : 'submitDesignPassive'
                                     } 
                                     buttonName={'New Appointment'}
                                     clickFunction={

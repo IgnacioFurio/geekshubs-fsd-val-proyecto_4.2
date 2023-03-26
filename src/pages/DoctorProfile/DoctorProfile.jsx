@@ -52,7 +52,7 @@ export const DoctorProfile = () => {
     return (
         <>
             <ProfileNavigator />
-            <Container fluid>
+            <Container fluid className='my-3'>
             {doctorData.length === 0 ? (
                 <>
                     <div><h1>Bringing your information.</h1></div>
@@ -116,8 +116,7 @@ export const DoctorProfile = () => {
                 <Row className='py-1'>
                     <Col xs={2}></Col>
                     <Col xs={8}>
-                        <ButtonSubmit className={'submitDesignPassive submitDesignActive'} buttonName={'View Appointments'} clickFunction={() => navigate('/doctor/appointments')}/>
-                        {/* <Navigator className={'headerNavigatorDesign'} route={'Home'} destination={'/'}/> */}
+                        <ButtonSubmit className={'submitDesignPassive submitDesignActive textFormat'} buttonName={'View Appointments'} clickFunction={() => navigate('/doctor/appointments')}/>
                     </Col>
                     <Col xs={2}></Col>
                 </Row>

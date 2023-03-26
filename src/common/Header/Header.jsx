@@ -20,15 +20,6 @@ export const Header = () => {
 
     const navigate = useNavigate();
 
-    // useEffect(() => {
-    //     // token
-    //     console.log(dataRdx?.userCredentials?.token);
-    //     // user
-    //     console.log(dataRdx?.userCredentials?.user);
-    //     // roleId
-    //     console.log(dataRdx?.userCredentials?.user?.roleId);
-    // });
-
     const logOut = () => {
         
         let backendData = {}
