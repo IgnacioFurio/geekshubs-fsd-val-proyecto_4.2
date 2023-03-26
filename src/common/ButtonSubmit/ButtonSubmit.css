@@ -1,9 +1,12 @@
 .submitDesignPassive{
     background-color:gainsboro;
     height: 2em;
+    width: 100%;
+
     display: flex;
     justify-content: center;
     align-items: center;
+    
     margin-top: 1em;
     margin-bottom: 1em;
 
@@ -17,20 +20,28 @@
 }
 .submitDesignActive:hover{
     transition: 0.3s;
-    background-color: lightskyblue;
+    background-color: blue;
 }
 
 .textFormat{
     color: beige;
-    margin: 1em;
 }
 
-.submitModifyDesing{
-    background-color: cadetblue;
-}
 .submitKeepDesing{
-    background-color:mediumspringgreen;
+    background-color:lightgreen;
+    transition: 0.3s;
+}
+.submitKeepDesing:hover{
+    transition: 0.3s;
+    background-color:green;
+    cursor: pointer;
 }
 .submitDeleteDesing{
-    background-color: tomato;
+    background-color: lightcoral;
+    transition: 0.3s;
+}
+.submitDeleteDesing:hover{
+    transition: 0.3s;
+    background-color: red;
+    cursor: pointer;
 }

@@ -61,7 +61,7 @@ export const Appointments = () => {
             <Row>
                 <Col xs={2}></Col>
                 <Col xs={8}>
-                    <ButtonSubmit className={'submitDesignPassive submitDesignActive'} buttonName={'New Appointment'} clickFunction={() => navigate('/profile/appointments/new')}/>
+                    <ButtonSubmit className={'submitDesignPassive submitDesignActive textFormat'} buttonName={'New Appointment'} clickFunction={() => navigate('/profile/appointments/new')}/>
                 </Col>
                 <Col xs={2}></Col>
             </Row>

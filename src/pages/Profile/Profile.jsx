@@ -49,19 +49,19 @@ export const Profile = () => {
             <Row>
             <ProfileNavigator/>            
             </Row>
+            <Row>
+                <Col xs={1}></Col>
+                <Col xs={10}>
+                    <ButtonSubmit className={'submitDesignPassive submitDesignActive textFormat'} buttonName={'New Patient'} clickFunction={() => newPatient()}/>
+                </Col>
+                <Col xs={1}></Col>
+            </Row>
             {patients.map(data => 
                         {
                             return <CardPatient key={data.DNI} dataPatient={data}></CardPatient>
                         }
                         )
                     }
-            <Row>
-                <Col xs={1}></Col>
-                <Col xs={10}>
-                    <ButtonSubmit className={'submitDesignPassive submitDesignActive'} buttonName={'New Patient'} clickFunction={() => newPatient()}/>
-                </Col>
-                <Col xs={1}></Col>
-            </Row>
         </Container>
     )
 };

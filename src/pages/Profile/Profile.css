@@ -1,0 +1,29 @@
+.borderLeftTopDesign{
+    border-top: 0.1em solid cadetblue;
+    border-left: 0.1em solid cadetblue;
+    border-top-left-radius: 0.2em;
+}
+.borderRightTopDesign{
+    border-top: 0.1em solid cadetblue;
+    border-right: 0.1em solid cadetblue;
+    border-top-right-radius: 0.2em;
+}
+.borderLeftDesign{
+    border-left: 0.1em solid cadetblue;
+}
+.borderRightDesign{
+    border-right: 0.1em solid cadetblue;
+}
+.borderLeftBottomDesign{
+    border-bottom: 0.1em solid cadetblue;
+    border-left: 0.1em solid cadetblue;
+    border-bottom-left-radius: 0.1em;
+}
+.borderRightBottomDesign{
+    border-bottom: 0.1em solid cadetblue;
+    border-right: 0.1em solid cadetblue;
+    border-bottom-right-radius: 0.2em;
+}
+.borderBottomDesign{
+    border-bottom: 0.1em solid cadetblue;
+}

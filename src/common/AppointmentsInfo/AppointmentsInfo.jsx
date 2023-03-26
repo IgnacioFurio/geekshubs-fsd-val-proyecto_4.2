@@ -210,10 +210,10 @@ export const AppointmentsInfo = ( dataPatient ) => {
                                     <Col xs= {12} className={'text-center pt-3 smText'}>Do you really want to cancel the appointment?</Col>
                                     <Col xs= {12}></Col>
                                     <Col xs= {3}></Col>
-                                    <Col xs= {6}><ButtonSubmit className={'submitDesignPassive submitKeepDesing'} buttonName={'Keep it'} clickFunction={() => keepAppointment()} /></Col>
+                                    <Col xs= {6}><ButtonSubmit className={'submitDesignPassive submitKeepDesing textFormat'} buttonName={'Keep it'} clickFunction={() => keepAppointment()} /></Col>
                                     <Col xs= {3}></Col>
                                     <Col xs= {3}></Col>
-                                    <Col xs= {6}><ButtonSubmit className={'submitDesignPassive submitDeleteDesing'} buttonName={'Cancel it'} clickFunction={() => confirmCancelAppointment()} /></Col>
+                                    <Col xs= {6}><ButtonSubmit className={'submitDesignPassive submitDeleteDesing textFormat'} buttonName={'Cancel it'} clickFunction={() => confirmCancelAppointment()} /></Col>
                                     <Col xs= {3}></Col>
                                 </>
                             ) : (
@@ -225,18 +225,18 @@ export const AppointmentsInfo = ( dataPatient ) => {
                                                 <Col xs= {12} className={'text-center pt-3 smText'}>Do you really want to modify the appointment?</Col>
                                                 <Col xs= {12}></Col>
                                                 <Col xs= {3}></Col>
-                                                <Col xs= {6}><ButtonSubmit className={'submitDesignPassive submitDesignActive'} buttonName={'Yes'} clickFunction={() => newDataAppointment()} /></Col>
+                                                <Col xs= {6}><ButtonSubmit className={'submitDesignPassive submitDesignActive textFormat'} buttonName={'Yes'} clickFunction={() => newDataAppointment()} /></Col>
                                                 <Col xs= {3}></Col>
                                                 <Col xs= {3}></Col>
-                                                <Col xs= {6}><ButtonSubmit className={'submitDesignPassive submitDeleteDesing'} buttonName={'No'} clickFunction={() => notModifyAppointment()} /></Col>
+                                                <Col xs= {6}><ButtonSubmit className={'submitDesignPassive submitDeleteDesing textFormat'} buttonName={'No'} clickFunction={() => notModifyAppointment()} /></Col>
                                                 <Col xs= {3}></Col>
                                             </>
                                         ) : (
                                             <>
                                                 <Col xs= {1}></Col>
-                                                <Col xs= {4}><ButtonSubmit className={'submitDesignPassive submitModifyDesing'} buttonName={'Modify'} clickFunction={() => updateSelectedAppointment()} /></Col>
+                                                <Col xs= {4}><ButtonSubmit className={'submitDesignPassive submitDesignActive textFormat'} buttonName={'Modify'} clickFunction={() => updateSelectedAppointment()} /></Col>
                                                 <Col xs= {1}></Col>
-                                                <Col xs= {4}><ButtonSubmit className={'submitDesignPassive submitDeleteDesing'} buttonName={'Cancel'} clickFunction={() => cancelSelectedAppointment()} /></Col>
+                                                <Col xs= {4}><ButtonSubmit className={'submitDesignPassive submitDeleteDesing textFormat'} buttonName={'Cancel'} clickFunction={() => cancelSelectedAppointment()} /></Col>
                                                 <Col xs= {1}></Col>
                                             </>
                                         )
