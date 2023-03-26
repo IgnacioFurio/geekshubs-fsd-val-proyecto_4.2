@@ -132,7 +132,7 @@ export const UserCreateAppointment = () => {
     useEffect(() => {
         
         if(doctorsData.length === 0){
-            getDoctorData(userRdx.userCredentials.token)
+            getDoctorData()
             .then(
                 result => {
                     setDoctorsData(result.data.data)

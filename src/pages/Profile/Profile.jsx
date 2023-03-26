@@ -47,9 +47,6 @@ export const Profile = () => {
     return (
         <Container fluid>
             <Row>
-            <ProfileNavigator/>            
-            </Row>
-            <Row>
                 <Col xs={1}></Col>
                 <Col xs={10}>
                     <ButtonSubmit className={'submitDesignPassive submitDesignActive textFormat'} buttonName={'New Patient'} clickFunction={() => newPatient()}/>

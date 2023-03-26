@@ -44,14 +44,8 @@ export const DoctorProfile = () => {
 
     }, [doctorData]);
 
-    useEffect(() => {
-        // console.log(doctorDataRdx.userCredentials.token);
-        // console.log(doctorData[0].collegiate_member);
-    });
-
     return (
         <>
-            <ProfileNavigator />
             <Container fluid className='my-3'>
             {doctorData.length === 0 ? (
                 <>

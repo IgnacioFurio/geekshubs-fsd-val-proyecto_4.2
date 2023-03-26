@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { login, userData } from '../Slices/userSlice';
 import { roleIn } from '../Slices/isAdminSlice';
 //apicall
-import { userLogin } from '../../services/apiCalls';
+import { getDoctorData, userLogin } from '../../services/apiCalls';
 //jwt
 import { decodeToken } from 'react-jwt';
 //render
@@ -50,6 +50,9 @@ export const Login = () => {
         }
     );
 
+    //set doctors
+    const [doctors, setDoctors] = useState([])
+
     //activate submit button
     const [submitActive, setSubmitActive] = useState(false);
 
@@ -75,6 +78,18 @@ export const Login = () => {
         if(dataRdx.userCredentials.token){
             navigate("/");
         };
+
+        if(doctors.length === 0){
+            getDoctorData()
+                .then(
+                    result => {
+                        console.log(result.data.data);
+                        setDoctors(result.data.data)
+                    }
+                )
+                .catch(error => console.log(error))
+        };
+
     }, []);
 
     // for every change
@@ -111,6 +126,8 @@ export const Login = () => {
             };
         };
 
+        console.log(dataRdx?.userCredentials?.user?.userId);
+        console.log(doctors[0].user_id);
         //in case the data it's full validated
         setSubmitActive(true);
     });
@@ -170,6 +187,7 @@ export const Login = () => {
                     dispatch(roleIn({isAdmin: false}));
                 };
 
+                
                 setTimeout(() => {navigate('/')}, 3000)
             })
             .catch((error) => {

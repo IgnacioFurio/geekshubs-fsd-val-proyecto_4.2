@@ -41,9 +41,6 @@ export const User = () => {
                         <></>
                     ) : (
                         <>
-                            <Row>
-                                <ProfileNavigator />
-                            </Row>
                             <Row  className='userProfileDesign my-3'>
                                 <Col xs={1}></Col>
                                 <Col xs={10} className='py-1 fs-5'>Username:</Col>

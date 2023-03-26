@@ -56,7 +56,6 @@ export const Appointments = () => {
 
     return (
         <>
-            <ProfileNavigator/>
             <Container fluid>
             <Row>
                 <Col xs={2}></Col>
