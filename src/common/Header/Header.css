@@ -1,14 +1,29 @@
 .headerDesign{
-    height: 15vh;
+    height: 10vh;
 
-    background-color: cadetblue;
+    background-color: blue;
 
     display: flex;
+}
+.textForm{
+    color: white;
+}
+.headerRouting{
+    display: flex;
+    align-items: center;
+}
+.alignLeft{
+    align-items: normal;
+}
+.alignRight{
     align-items: end;
 }
 
-.headerRouting{
-    display: flex;
-    justify-content: space-evenly;
-    align-items: end;
+.dropDownDesign{
+    width: 3em;
+    background-color: blue !important;
+    color: white;
+
+    margin-right: 7em;
+    border: 0em;
 }

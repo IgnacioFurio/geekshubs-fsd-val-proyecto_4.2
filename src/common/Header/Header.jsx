@@ -3,14 +3,19 @@ import { useNavigate } from 'react-router-dom';
 //  redux 
 import { useDispatch, useSelector } from 'react-redux';
 import { userout, userData } from '../../pages/Slices/userSlice';
+import { roleOut } from '../../pages/Slices/isAdminSlice';
 // render 
 import { Navigator } from '../Navigator/Navigator';
 import { ButtonSubmit } from '../ButtonSubmit/ButtonSubmit';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+
 import './Header.css'
-import { roleOut } from '../../pages/Slices/isAdminSlice';
+
 
 export const Header = () => {
 
@@ -31,28 +36,46 @@ export const Header = () => {
     };
 
     return (
-    <Container fluid className='headerDesign'>
-        {
-            dataRdx.userCredentials.token ? (
-                <Row>
-                    <Col className='headerRouting'>
-                        <Navigator className={'headerNavigatorDesign'} route={'Home'} destination={'/'}/>
-                        <Navigator className={'headerNavigatorDesign'}  route={'Profile'} destination={'/profile'}/>
-                        <Navigator className={'headerNavigatorDesign'}  route={'Register'} destination={'/register'}/>
-                        <ButtonSubmit className={'textFormat'} buttonName={'Log Out'} clickFunction={() => logOut()}/>
-                    </Col>
-                </Row>
-            ) : (
-                <Row>
-                    <Col className='headerRouting'>
-                        <Navigator className={'headerNavigatorDesign'}  route={'Home'} destination={'/'}/>
-                        <Navigator className={'headerNavigatorDesign'}  route={'Profile'} destination={'/profile'}/>
-                        <Navigator className={'headerNavigatorDesign'}  route={'Register'} destination={'/register'}/>
-                        <Navigator className={'headerNavigatorDesign'}  route={'Log In'} destination={'/login'}/>
-                    </Col>
-                </Row>
-            )
-        }
-    </Container>
+
+        <Navbar bg="primary" expand="lg" className='headerDesign m-0 p-0'>
+            <Container className='headerDesign'>
+            <Navbar.Brand onClick={() => navigate('/')}>
+                <h5 className='textForm'>Fresh Breath</h5>
+            </Navbar.Brand>
+            {
+                dataRdx.userCredentials.token ? (
+                <>
+                    <NavDropdown title={dataRdx.userCredentials.user.userName} id="basic-nav-dropdown" className='dropDownDesign'>
+                    <NavDropdown.Item onClick={()=>navigate('/profile/user')}>
+                        My profile
+                    </NavDropdown.Item>
+                    <NavDropdown.Item onClick={()=>navigate('/profile')}>
+                        My patients
+                    </NavDropdown.Item>
+                    <NavDropdown.Item onClick={()=>navigate('/profile/appointments')}>
+                        My appointments
+                    </NavDropdown.Item>
+                    <NavDropdown.Divider />
+                    <NavDropdown.Item onClick={()=>logOut()}>
+                        Log Out
+                    </NavDropdown.Item>
+                    </NavDropdown>
+                </>
+                ) : (
+                <>
+                    <NavDropdown title='Log In' id="basic-nav-dropdown" className='dropDownDesign'>
+                    <NavDropdown.Item onClick={()=>navigate('/register')}>
+                        Sign Up
+                    </NavDropdown.Item>
+                    <NavDropdown.Divider />
+                    <NavDropdown.Item onClick={()=>navigate('/login')}>
+                        Sign In
+                    </NavDropdown.Item>
+                    </NavDropdown>
+                </>
+                ) 
+            }
+            </Container>
+        </Navbar>
     )
 };
