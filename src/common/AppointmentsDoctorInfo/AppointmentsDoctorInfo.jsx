@@ -13,64 +13,64 @@ export const AppointmentsDoctorInfo = (dataDocAppoint) => {
 
     return (
         <>
-            <Container fluid className='appointmentsDoctorInfoDesign'>
-                <Row  className='py-1'>
+            <Container fluid className='my-3'>
+                <Row  className=''>
                     <Col xs={1}></Col>
-                    <Col xs={10}>Appointment information:</Col>
-                    <Col xs={1}></Col>
-                </Row>
-                <Row>
-                    <Col xs={1}></Col>
-                    <Col xs={3}>Date:</Col>
-                    <Col xs={7} className={'smText'}>{dataDocAppoint?.dataDocAppoint.date_time}</Col>
+                    <Col xs={10} className='borderLeftTopDesign borderRightTopDesign borderBottomDesign fs-4'>Appointment information:</Col>
                     <Col xs={1}></Col>
                 </Row>
                 <Row>
                     <Col xs={1}></Col>
-                    <Col xs={3}>Id:</Col>
-                    <Col xs={7} className={'smText'}>{dataDocAppoint?.dataDocAppoint.id}</Col>
+                    <Col xs={3} className='borderLeftDesign'>Date:</Col>
+                    <Col xs={7} className={'borderRightDesign smText'}>{dataDocAppoint?.dataDocAppoint.date_time}</Col>
                     <Col xs={1}></Col>
                 </Row>
                 <Row>
                     <Col xs={1}></Col>
-                    <Col xs={3}>Requested:</Col>
-                    <Col xs={7} className={'smText'}>{dataDocAppoint?.dataDocAppoint.createdAt}</Col>
+                    <Col xs={3} className='borderLeftDesign'>Id:</Col>
+                    <Col xs={7} className={'borderRightDesign smText'}>{dataDocAppoint?.dataDocAppoint.id}</Col>
                     <Col xs={1}></Col>
                 </Row>
                 <Row>
                     <Col xs={1}></Col>
-                    <Col xs={3}>Uptdated:</Col>
-                    <Col xs={7} className={'smText'}>{dataDocAppoint?.dataDocAppoint.createdAt}</Col>
+                    <Col xs={3} className='borderLeftDesign'>Requested:</Col>
+                    <Col xs={7} className={'borderRightDesign smText'}>{dataDocAppoint?.dataDocAppoint.createdAt}</Col>
                     <Col xs={1}></Col>
                 </Row>
                 <Row>
                     <Col xs={1}></Col>
-                    <Col xs={3}>Patient:</Col>
-                    <Col xs={7} className={'smText'}>{dataDocAppoint?.dataDocAppoint.Patient.name} {dataDocAppoint?.dataDocAppoint.Patient.surname}</Col>
+                    <Col xs={3} className='borderLeftDesign'>Uptdated:</Col>
+                    <Col xs={7} className={'borderRightDesign smText'}>{dataDocAppoint?.dataDocAppoint.createdAt}</Col>
                     <Col xs={1}></Col>
                 </Row>
                 <Row>
                     <Col xs={1}></Col>
-                    <Col xs={3}>Contact:</Col>
-                    <Col xs={7} className={'smText'}>{dataDocAppoint?.dataDocAppoint.Patient.phone_number}</Col>
+                    <Col xs={3} className='borderLeftDesign'>Patient:</Col>
+                    <Col xs={7} className={'borderRightDesign smText'}>{dataDocAppoint?.dataDocAppoint.Patient.name} {dataDocAppoint?.dataDocAppoint.Patient.surname}</Col>
                     <Col xs={1}></Col>
                 </Row>
                 <Row>
                     <Col xs={1}></Col>
-                    <Col xs={3}>Birth:</Col>
-                    <Col xs={7} className={'smText'}>{dataDocAppoint?.dataDocAppoint.Patient.birth}</Col>
+                    <Col xs={3} className='borderLeftDesign'>Contact:</Col>
+                    <Col xs={7} className={'borderRightDesign smText'}>{dataDocAppoint?.dataDocAppoint.Patient.phone_number}</Col>
                     <Col xs={1}></Col>
                 </Row>
                 <Row>
                     <Col xs={1}></Col>
-                    <Col xs={3}>Allergy:</Col>
-                    <Col xs={7} className={'smText'}>{dataDocAppoint?.dataDocAppoint.Patient.allergy}</Col>
+                    <Col xs={3} className='borderLeftDesign'>Birth:</Col>
+                    <Col xs={7} className={'borderRightDesign smText'}>{dataDocAppoint?.dataDocAppoint.Patient.birth}</Col>
                     <Col xs={1}></Col>
                 </Row>
                 <Row>
                     <Col xs={1}></Col>
-                    <Col xs={3}>Surgery:</Col>
-                    <Col xs={7} className={'smText'}>{dataDocAppoint?.dataDocAppoint.Patient.surgery}</Col>
+                    <Col xs={3} className='borderLeftDesign'>Allergy:</Col>
+                    <Col xs={7} className={'borderRightDesign smText'}>{dataDocAppoint?.dataDocAppoint.Patient.allergy}</Col>
+                    <Col xs={1}></Col>
+                </Row>
+                <Row>
+                    <Col xs={1}></Col>
+                    <Col xs={3} className='borderLeftBottomDesign'>Surgery:</Col>
+                    <Col xs={7} className={'borderRightBottomDesign smText'}>{dataDocAppoint?.dataDocAppoint.Patient.surgery}</Col>
                     <Col xs={1}></Col>
                 </Row>
             </Container>

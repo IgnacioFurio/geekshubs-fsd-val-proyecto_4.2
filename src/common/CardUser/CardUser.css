@@ -1,7 +1,6 @@
 .smText{
     font-size: small;
 }
-
 .borderLeftTopDesign{
     border-top: 0.1em solid cadetblue;
     border-left: 0.1em solid cadetblue;
@@ -28,6 +27,4 @@
     border-right: 0.1em solid cadetblue;
     border-bottom-right-radius: 0.2em;
 }
-.borderBottomDesign{
-    border-bottom: 0.1em solid cadetblue;
-}
+

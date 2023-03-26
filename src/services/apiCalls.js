@@ -12,7 +12,16 @@ export const userLogin = async (body) => {
     return await axios.post(`${root}/auth/login`, body)
 };
 
+export const getAllUser = async (token) => {
 
+    let config = {
+        headers: {
+            'Authorization': 'Bearer '+ token,  
+        }
+    }
+
+    return await axios.get(`${root}/user/all`, config);
+}
 
 export const getUserProfile = async (token) => {
 

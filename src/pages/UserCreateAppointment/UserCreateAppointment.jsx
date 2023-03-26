@@ -116,12 +116,6 @@ export const UserCreateAppointment = () => {
     });
 
     useEffect(() => {
-        console.log(newAppointmentError);
-        console.log(validInputField);
-        console.log(backendMessage);
-    });
-
-    useEffect(() => {
         
         if(patientsData.length === 0){
             getPatientInfo(userRdx.userCredentials.token)

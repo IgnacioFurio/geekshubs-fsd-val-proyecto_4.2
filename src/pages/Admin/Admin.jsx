@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch ,useSelector } from 'react-redux';
 import { userData } from '../Slices/userSlice';
 import { adminData } from '../Slices/isAdminSlice';
+import { getAllUser } from '../../services/apiCalls';
+import { CardUser } from '../../common/CardUser/CardUser';
 //render
 
 export const Admin = () => {
@@ -22,18 +24,32 @@ export const Admin = () => {
         if(isAdmin.isAdmin !== true ){
             navigate('/')
         };
+
+        console.log(users);
     });
+
+    useEffect(() => {
+
+        if(users.length === 0){
+
+            getAllUser(userRdx.userCredentials.token)
+                .then(
+                    result => {
+                        setUsers(result.data.data)
+                    }
+                )
+                .catch(error => console.log(error))
+
+        }
+    }, [users]);
 
     return (
         <>
-        {
-            !isAdmin.isAdmin ? (
-                // middleware that allows only admin or superadmin
-                <></>
-            ) : (
-                <>hy</>
-            )
-        }
+        {users.map(data => 
+            {
+                return <CardUser dataUser={data}></CardUser>
+            }
+            )}
         </>
     );
 };

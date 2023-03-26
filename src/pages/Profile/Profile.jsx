@@ -6,12 +6,12 @@ import { userData } from '../Slices/userSlice';
 //apicall
 import { getPatientInfo } from '../../services/apiCalls';
 //render
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import { CardPatient } from '../../common/CardPatient/CardPatient';
 import { ProfileNavigator } from '../../common/ProfileNavigator/ProfileNavigator';
 import { ButtonSubmit } from '../../common/ButtonSubmit/ButtonSubmit';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 export const Profile = () => {
 
