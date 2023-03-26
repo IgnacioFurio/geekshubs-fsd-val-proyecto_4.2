@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 //  redux 
 import { useDispatch, useSelector } from 'react-redux';
 import { userout, userData } from '../../pages/Slices/userSlice';
-import { roleOut } from '../../pages/Slices/isAdminSlice';
+import { adminData, roleOut } from '../../pages/Slices/isAdminSlice';
 // render 
 import { Navigator } from '../Navigator/Navigator';
 import { ButtonSubmit } from '../ButtonSubmit/ButtonSubmit';
@@ -21,6 +21,8 @@ export const Header = () => {
 
     const dataRdx = useSelector(userData);
 
+    const isAdminRdx = useSelector(adminData)
+
     const  dispatch = useDispatch();
 
     const navigate = useNavigate();
@@ -34,7 +36,7 @@ export const Header = () => {
 
         setTimeout(() => {navigate('/')}, 1000)
     };
-
+    
     return (
 
         <Navbar bg="primary" expand="lg" className='headerDesign m-0 p-0'>
@@ -55,6 +57,20 @@ export const Header = () => {
                     <NavDropdown.Item onClick={()=>navigate('/profile/appointments')}>
                         My appointments
                     </NavDropdown.Item>
+                    <NavDropdown.Item onClick={()=>navigate('/doctor')}>
+                        Doctor info
+                    </NavDropdown.Item>
+                    {
+                        isAdminRdx.isAdmin === true ? (
+                        <>
+                        <NavDropdown.Item onClick={()=>navigate('/admin')}>
+                        Admin info
+                        </NavDropdown.Item>
+                        </>
+                        ) : (
+                        <></>
+                        )
+                    }
                     <NavDropdown.Divider />
                     <NavDropdown.Item onClick={()=>logOut()}>
                         Log Out

@@ -83,7 +83,6 @@ export const Login = () => {
             getDoctorData()
                 .then(
                     result => {
-                        console.log(result.data.data);
                         setDoctors(result.data.data)
                     }
                 )
@@ -125,9 +124,7 @@ export const Login = () => {
                 return;
             };
         };
-
-        console.log(dataRdx?.userCredentials?.user?.userId);
-        console.log(doctors[0].user_id);
+        
         //in case the data it's full validated
         setSubmitActive(true);
     });

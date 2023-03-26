@@ -35,6 +35,7 @@ export const InputType = ({className, type, name, placeholder, required, error, 
                 required={required}
                 onChange={(e)=>changeFunction(e)}
                 onBlur={(e)=>blurFunction(e)}
+                maxLength={50}
             />
             <div>{error}</div>
         </>

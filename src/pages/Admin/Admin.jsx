@@ -25,7 +25,6 @@ export const Admin = () => {
             navigate('/')
         };
 
-        console.log(users);
     });
 
     useEffect(() => {

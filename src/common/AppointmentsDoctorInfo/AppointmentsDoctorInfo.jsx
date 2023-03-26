@@ -7,10 +7,6 @@ import './AppointmentsDoctorInfo.css'
 
 export const AppointmentsDoctorInfo = (dataDocAppoint) => {
 
-    useEffect(() => {
-        console.log(dataDocAppoint);
-    });
-
     return (
         <>
             <Container fluid className='my-3'>
