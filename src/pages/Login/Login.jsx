@@ -251,7 +251,7 @@ export const Login = () => {
                         <Col xs={4}>
                             <ButtonSubmit 
                                 className={
-                                    submitActive ? 'submitDesignPassive submitDesignActive' : 'submitDesignPassive'
+                                    submitActive ? 'submitDesignPassive submitDesignActive textFormat' : 'submitDesignPassive'
                                 } 
                                 buttonName={'Log In'}
                                 clickFunction={() => logUser()}
