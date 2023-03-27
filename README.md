@@ -5,19 +5,17 @@ FrontEnd for the dental care clinique (proyecto 4.1)
 
   <summary>Contenido 📝</summary>
   <ol>
-    <li><a href="#objetivo-🎯">Objetivo</a></li>
-    <li><a href="#sobre-el-proyecto-🔎">Sobre el proyecto</a></li>
-    <li><a href="#deploy-🚀">Deploy</a></li>
+    <li><a href="#objetivo-🎯">Objetivo // Goal 🎯</a></li>
+    <li><a href="#sobre-el-proyecto-🔎">Sobre el proyecto // About this project 🔎</a></li>
+    <li><a href="#deploy-🚀">Deploy 🚀</a></li>
     <li><a href="#stack">Stack</a></li>
-    <li><a href="#instalación-en-local">Instalación</a></li>
-    <li><a href="#vistas">Vistas</a></li>
-    <li><a href="#futuras-funcionalidades">Futuras funcionalidades</a></li>
-    <li><a href="#contribuciones">Contribuciones</a></li>
-    <li><a href="#licencia">Licencia</a></li>
-    <li><a href="#webgrafia">Webgrafia</a></li>
-    <li><a href="#desarrollo">Desarrollo</a></li>
-    <li><a href="#agradecimientos">Agradecimientos</a></li>
-    <li><a href="#contacto">Contacto</a></li>
+    <li><a href="#instalación-en-local">Instalación en local // Local instalation</a></li>
+    <li><a href="#vistas">Vistas // Views</a></li>
+    <li><a href="#futuras-funcionalidades">Futuras funcionalidades // Future features</a></li>
+    <li><a href="#contribuciones">Contribuciones // Supporting</a></li>
+    <li><a href="#webgrafia">Webgrafia: // Webgraphy:</a></li>
+    <li><a href="#agradecimientos">Agradecimientos // Thanks</a></li>
+    <li><a href="#contacto">Contacto // Contact</a></li>
   </ol>
 </details>
 
@@ -32,7 +30,7 @@ Esta es la segunda parte de un proyecto mayor, esta vez buscamos conectar este f
 This is the second part of a bigger project where the main goal is to connect this front end to the backend build previusly (https://github.com/IgnacioFurio/geekshubs-fsd-val-proyecto_4.1).
 
 ---
-## Sobre el proyecto 🔎
+## Sobre el proyecto // About this project 🔎
 ---
 Este ha sido el proyecto más exigente hasta la fecha, entre controlar los errores, las brechas de seguridad y la conexión con el backend, ha quedado poco tiempo para ajustar las vistas, así que de momento el apartado visual es algo flojo, algo en lo que trabajar de cara al futuro.
 
@@ -61,7 +59,7 @@ This was the most demanding project until now because of the error handling, the
  </div>
 
 ---
-## Instalación en local
+## Instalación en local // Local instalation
 ---
 1. Clonar el repositorio // Clone repository
 2. ` $ npm install `
@@ -69,81 +67,97 @@ This was the most demanding project until now because of the error handling, the
 4. ...
 
 ---
-## Vistas
+## Vistas // Views
 ---
 
 
 Register
-<img src="./images/register.png">
-Login
-<img src="./images/login.png">
-Profile
-<img src="./images/profile.png">
-Doctor profile
-<img src="./images/routines.png">
-Admin profile
-<img src="./images/exercises.png">
 
-## Futuras funcionalidades
+<img src="./src/assets/Register.jpg" width="200px">
+
+Login
+
+<img src="./src/assets/Login.jpg" width="200px">
+
+Profile
+
+<img src="./src/assets/Profile.jpg" width="200px">
+
+Doctor profile
+
+<img src="./src/assets/Doctor.jpg" width="200px">
+
+Admin profile
+
+<img src="./src/assets/Admin.jpg" width="200px">
+
+---
+## Futuras funcionalidades // Future features
+---
 
 ⬜ Filtar por usuario // User filter
 ⬜ Actualizar datos usuario  // User data update
 ⬜ Mejorar la interfaz gráfica  // Graphic interface improvement
 
-## Contribuciones
-Las sugerencias y aportaciones son siempre bienvenidas.  
+---
+## Contribuciones // Supporting
+---
 
-Puedes hacerlo de dos maneras:
+Las sugerencias y aportaciones son siempre bienvenidas.  // Suggestion and support are always welcome
 
-1. Abriendo una issue
-2. Crea un fork del repositorio
-    - Crea una nueva rama  
+Puedes hacerlo de dos maneras: // There is two differente ways:
+
+1. Abriendo una issue // Open an issue
+2. Crea un fork del repositorio // Fork the repository
+    - Crea una nueva rama  // Create new branch
         ```
         $ git checkout -b feature/nombreUsuario-mejora
         ```
-    - Haz un commit con tus cambios 
+    - Haz un commit con tus cambios // Make a commit with the changes
         ```
         $ git commit -m 'feat: mejora X cosa'
         ```
-    - Haz push a la rama 
+    - Haz push a la rama // Push origin your branch
         ```
         $ git push origin feature/nombreUsuario-mejora
         ```
-    - Abre una solicitud de Pull Request
+    - Abre una solicitud de Pull Request // Open a Pull Request
 
-## Licencia
-Este proyecto se encuentra bajo licencia de "Mi Nombre"
+---
+## Webgrafia: // Webgraphy:
+---
 
-## Webgrafia:
-Para conseguir mi objetivo he recopilado información de:
 - Repositorios de Geeks Hubs Academy  // Geeks Hubs Academy repositories
 
   <a href="https://github.com/GeeksHubsAcademy/FSDVLC0123ReactTutoria1" target="_blank"><img src="https://img.shields.io/badge/github-24292F?style=for-the-badge&logo=github&logoColor=white" target="_blank"></a>
 - Documentacion de librerias externas // External libraries official documentation
 - Documentación oficial de las tecnologías usadas // Official techs documentation
 
-## Desarrollo:
+---
+## Agradecimientos: // Thenks:
+---
 
-``` js
- const developer = "datata";
+Me gustaría agradecer a nuestro maestro por su paciencia y confianza, nos llevais a nuestros límites, gracias a lo cúal estamos aprendiendo habilidades interesantes.
 
- console.log("Desarrollado por: " + datata);
-```  
-
-## Agradecimientos:
-
-Agradezco a mis compañeros el tiempo dedicado a este proyecto:
+I want to thank our mentors for your patience and trust, you are pushing us to the limits and we are learning lot of interesting skills.
 
 - **David86dev**  
 <a href="https://github.com/Dave86dev" target="_blank"><img src="https://img.shields.io/badge/github-24292F?style=for-the-badge&logo=github&logoColor=white" target="_blank"></a> 
 
+- **Datata**
+  
+  <a href="https://github.com/datata" target="_blank"><img src="https://img.shields.io/badge/github-24292F?style=for-the-badge&logo=github&logoColor=white" target="_blank"></a> 
+- **MaraScampini**
+  
+  <a href="https://github.com/MaraScampini" target="_blank"><img src="https://img.shields.io/badge/github-24292F?style=for-the-badge&logo=github&logoColor=white" target="_blank"></a> 
 
 
 
-## Contacto
+
+## Contacto // Contact
 
 - ***Ignacio***  
 <a href="https://www.github.com/userGithub/" target="_blank"><img src="https://img.shields.io/badge/github-24292F?style=for-the-badge&logo=github&logoColor=green" target="_blank"></a> 
 <a href = "mailto:bichoifj@gmail.com"><img src="https://img.shields.io/badge/Gmail-C6362C?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
-<a href="https://www.linkedin.com/in/linkedinUser/" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank"></a> 
+<a href="https://www.linkedin.com/in/ignacio-furi%C3%B3-0a9010233/" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank"></a> 
 </p>
