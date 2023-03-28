@@ -13,6 +13,7 @@ import { ButtonSubmit } from '../../common/ButtonSubmit/ButtonSubmit';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import './CreatePatient.css';
 
 export const CreatePatient = () => {
 
@@ -162,7 +163,7 @@ export const CreatePatient = () => {
     };
 
     return (
-        <Container>
+        <Container fluid className='createPatientDesign'>
             {
                 userMessage !== "" ?
                 (

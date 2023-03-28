@@ -1,8 +1,6 @@
 .headerDesign{
     height: 10vh;
 
-    background-color: blue;
-
     display: flex;
 }
 .textForm{
@@ -21,7 +19,6 @@
 
 .dropDownDesign{
     width: 3em;
-    background-color: blue !important;
     color: white;
 
     margin-right: 7em;

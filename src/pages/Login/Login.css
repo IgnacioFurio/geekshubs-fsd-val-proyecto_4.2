@@ -1,4 +1,3 @@
 .loginDesign{
-    height: 85vh;
-    margin: 1em;
+    min-height: 70vh;
 }

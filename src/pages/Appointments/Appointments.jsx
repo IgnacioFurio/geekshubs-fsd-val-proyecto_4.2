@@ -13,6 +13,7 @@ import { ButtonSubmit } from '../../common/ButtonSubmit/ButtonSubmit';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import './Appointments.css';
 
 export const Appointments = () => {
 
@@ -56,7 +57,7 @@ export const Appointments = () => {
 
     return (
         <>
-            <Container fluid>
+            <Container fluid className='appointmentDesign'>
             <Row>
                 <Col xs={2}></Col>
                 <Col xs={8}>

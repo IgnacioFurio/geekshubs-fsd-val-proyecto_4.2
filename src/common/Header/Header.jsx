@@ -40,7 +40,7 @@ export const Header = () => {
 
     return (
 
-        <Navbar bg="primary" expand="lg" className='headerDesign m-0 p-0'>
+        <Navbar bg="primary" expand="lg" className='m-0 p-0'>
             <Container className='headerDesign'>
             <Navbar.Brand onClick={() => navigate('/')}>
                 <h5 className='textForm'>Fresh Breath</h5>

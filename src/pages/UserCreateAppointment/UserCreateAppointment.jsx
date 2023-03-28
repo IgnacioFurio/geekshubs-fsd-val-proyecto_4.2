@@ -1,5 +1,6 @@
 import React, { useState, useEffect  } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { validate } from '../../helpers/useful';
 //apicall
 import { createAppointment, getDoctorData, getPatientInfo } from '../../services/apiCalls';
 //redux
@@ -12,7 +13,7 @@ import { ButtonSubmit } from '../../common/ButtonSubmit/ButtonSubmit';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { validate } from '../../helpers/useful';
+import './UserCreateApopointment.css';
 
 export const UserCreateAppointment = () => {
     
@@ -191,7 +192,7 @@ export const UserCreateAppointment = () => {
 
     return (
         <>
-            <Container fluid>
+            <Container fluid className='userCreateAppointment'>
                 {
                 backendMessage ? (
                     <>

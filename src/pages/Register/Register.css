@@ -1,4 +1,4 @@
 .registerDesign{
-    height: 100%;
+    min-height: 70vh;
     padding: 1em;    
 }

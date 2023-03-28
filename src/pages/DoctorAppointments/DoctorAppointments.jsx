@@ -8,8 +8,7 @@ import { userData } from '../Slices/userSlice';
 // render
 import { AppointmentsDoctorInfo } from '../../common/AppointmentsDoctorInfo/AppointmentsDoctorInfo';
 import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import './DoctorAppointments.css';
 
 export const DoctorAppointments = () => {
 
@@ -42,6 +41,7 @@ export const DoctorAppointments = () => {
 
     return (
         <>
+            <Container fluid className='doctorAppointmentDesign'>
             {doctorData.length === 0 ? (
                 <>
                 <div>bring your appointments</div>
@@ -56,6 +56,7 @@ export const DoctorAppointments = () => {
                     }
             </>
             )}
+            </Container>
         </>
     );
 };

@@ -46,7 +46,7 @@ export const DoctorProfile = () => {
 
     return (
         <>
-            <Container fluid className='my-3'>
+            <Container fluid className='doctorProfileDesign my-3'>
             {doctorData.length === 0 ? (
                 <>
                     <div><h1>Bringing your information.</h1></div>

@@ -7,6 +7,8 @@ import { adminData } from '../Slices/isAdminSlice';
 import { getAllUser } from '../../services/apiCalls';
 import { CardUser } from '../../common/CardUser/CardUser';
 //render
+import Container from 'react-bootstrap/Container';
+import './Admin.css'
 
 export const Admin = () => {
 
@@ -44,11 +46,13 @@ export const Admin = () => {
 
     return (
         <>
+        <Container className='adminDesign'>
         {users.map(data => 
             {
                 return <CardUser dataUser={data}></CardUser>
             }
             )}
+        </Container>
         </>
     );
 };
