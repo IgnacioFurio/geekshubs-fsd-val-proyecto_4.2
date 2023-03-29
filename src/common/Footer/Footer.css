@@ -1,6 +1,21 @@
 .footerDesign{
     background-color: black;
-    height: 20vh;
+    min-height: 20vh;
     color: white;
-    margin-top: auto;
+    padding-top: 1em;
+
+    border-top-left-radius: 0.2em;
+    border-top-right-radius: 0.2em;
+}
+
+.footerInfo{
+    display: flex;
+    flex-direction: column;
+}
+
+.footerLogo{
+    width: 2em;
+    height: 2em;
+
+    margin: 0.5em;
 }
